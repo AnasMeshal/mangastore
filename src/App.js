@@ -1,14 +1,7 @@
+//React
 import React from "react";
 import style from "./style";
-import mangas from "./mangas";
-
-const mangasList = mangas.map((manga) => (
-  <div style={style.box} key={manga.id}>
-    <img style={style.mangaCover} src={manga.img} alt={manga.name} />
-    <p style={style.mangaTitle}>{manga.name}</p>
-    <p style={style.mangaPrice}>{manga.price}KD</p>
-  </div>
-));
+import MangaList from "./components/MangaList";
 
 function App() {
   return (
@@ -18,7 +11,9 @@ function App() {
         <h4 style={style.text}>Here You Can Find EveryThing About Manga</h4>
       </div>
 
-      <div style={style.list}>{mangasList}</div>
+      <div style={style.list}>
+        <MangaList />
+      </div>
     </div>
   );
 }
