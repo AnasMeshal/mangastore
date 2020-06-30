@@ -17,7 +17,7 @@ import {
 } from "./style";
 
 const theme = {
-  backgroundColor: "#dfe4ea",
+  backgroundColor: "#ced6e0",
   textColor: "black",
   borderColor: "black",
 };

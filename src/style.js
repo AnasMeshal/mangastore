@@ -36,24 +36,26 @@ const Description = styled.h4`
 `;
 
 const ItemWrapper = styled.div`
-  border: white solid 3px;
+  border: ${(props) => props.theme.borderColor} solid 3px;
   margin: 4px;
   border-radius: 10px;
-  background: #fff;
+  background: #f1f2f6;
 
   p {
     color: black;
     font-weight: Bolder;
     text-align: center;
     font-size: 20px;
+
+    &.item-price {
+      color: blue;
+      font-weight: bold;
+      text-align: center;
+      font-size: 20px;
+    }
   }
 
-  &.item-price {
-    color: Blue;
-    font-weight: bold;
-    text-align: center;
-    font-size: 20px;
-  }
+  
 `;
 
 const ShopImage = styled.img`
