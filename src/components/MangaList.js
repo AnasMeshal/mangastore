@@ -1,21 +1,21 @@
 //React
 import React from "react";
 
-//style
-import style from "../style";
-
-//manga
+//Mangas
 import mangas from "../mangas";
 
-//MangaItem
+//Components
 import MangaItem from "./MangaItem";
+
+//Styles
+import { ListWrapper } from "../style";
 
 const MangaList = () => {
   const mangaList = mangas.map((manga) => (
-    <MangaItem Manga={manga} key={manga.id} />
+    <MangaItem manga={manga} key={manga.id} />
   ));
-  
-  return <div style={style.list}>{mangaList}</div>
+
+  return <ListWrapper>{mangaList}</ListWrapper>;
 };
 
 export default MangaList;

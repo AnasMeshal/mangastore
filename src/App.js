@@ -1,20 +1,40 @@
 //React
 import React from "react";
-import style from "./style";
+
+//ThemeProvider
+import { ThemeProvider } from "styled-components";
+
+//Components
 import MangaList from "./components/MangaList";
+
+//Styles
+import {
+  GlobalStyle,
+  TitleWrapper,
+  Title,
+  Description,
+  ListWrapper,
+} from "./style";
+
+const theme = {
+  backgroundColor: "#dfe4ea",
+  textColor: "black",
+  borderColor: "black",
+};
 
 function App() {
   return (
-    <div>
-      <div style={style.title}>
-        <h1 style={style.h1}>Welcome To Manga Store</h1>
-        <h4 style={style.text}>Here You Can Find EveryThing About Manga</h4>
-      </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <TitleWrapper>
+        <Title>Welcome To Manga Store</Title>
+        <Description>Here You Can Find EveryThing About Manga</Description>
+      </TitleWrapper>
 
-      <div style={style.list}>
+      <ListWrapper>
         <MangaList />
-      </div>
-    </div>
+      </ListWrapper>
+    </ThemeProvider>
   );
 }
 

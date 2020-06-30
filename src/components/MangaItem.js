@@ -1,18 +1,17 @@
 //React
 import React from "react";
 
-//style
-import style from "../style"
+//Styles
+import { ShopImage, ItemWrapper } from "../style";
 
-const MangaItem = (props) => { 
-    return (
-    <div style={style.box}>
-      <img style={style.mangaCover} src={props.Manga.img} alt={props.Manga.name} />
-      <p style={style.mangaTitle}>{props.Manga.name}</p>
-      <p style={style.mangaPrice}>{props.Manga.price}KD</p>
-    </div>
-    
+const MangaItem = (props) => {
+  return (
+    <ItemWrapper>
+      <ShopImage src={props.manga.img} alt={props.manga.name} />
+      <p>{props.manga.name}</p>
+      <p className="item-price">{props.manga.price}KD</p>
+    </ItemWrapper>
   );
-}
+};
 
-  export default MangaItem;
+export default MangaItem;
