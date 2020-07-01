@@ -2,14 +2,20 @@
 import React from "react";
 
 //Styles
-import { ShopImage, ItemWrapper } from "../style";
+import { ShopImage, ItemWrapper, DeleteButtonStyled } from "../style";
 
 const MangaItem = (props) => {
+  const manga = props.manga;
+
+  const handleDelete = () => {
+    props.deleteManga(manga.id)
+  }
   return (
     <ItemWrapper>
-      <ShopImage src={props.manga.img} alt={props.manga.name} />
-      <p>{props.manga.name}</p>
-      <p className="item-price">{props.manga.price}KD</p>
+      <ShopImage src={manga.img} alt={manga.name} />
+      <p>{manga.name}</p>
+      <p className="item-price">{manga.price}KD</p>
+      <DeleteButtonStyled onClick={handleDelete}>Delete Manga</DeleteButtonStyled>
     </ItemWrapper>
   );
 };

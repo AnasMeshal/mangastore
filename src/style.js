@@ -27,12 +27,18 @@ const TitleWrapper = styled.div`
 
 const Title = styled.h1`
   margin-bottom: 15px;
+  :hover {
+    cursor: default;
+  }
 `;
 
 const Description = styled.h4`
   text-align: center;
   font-family: Fjalla One, sans-serif;
   font-size: 20px;
+  :hover {
+    cursor: default;
+  }
 `;
 
 const ItemWrapper = styled.div`
@@ -46,6 +52,9 @@ const ItemWrapper = styled.div`
     font-weight: Bolder;
     text-align: center;
     font-size: 20px;
+    :hover {
+      cursor: default;
+    }
 
     &.item-price {
       color: #27ae60;
@@ -54,8 +63,6 @@ const ItemWrapper = styled.div`
       font-size: 20px;
     }
   }
-
-  
 `;
 
 const ShopImage = styled.img`
@@ -75,7 +82,7 @@ flex-direction: row;
 justify-content: center;
 margin-top: 3vh;
 margin-bottom: 3vh;
-`
+`;
 
 const ThemeButton = styled.button`
 font-size: 20px;
@@ -84,7 +91,22 @@ color: ${(props) => props.theme.textColor};
 border: ${(props) => props.theme.borderColor} solid;
 border-radius: 10px;
 padding: 10px 20px;
-`
+  :hover {
+    cursor: pointer;
+    opacity: 0.4;
+    transition: ease-out 300ms;
+  }
+`;
+
+const DeleteButtonStyled = styled.h5`
+color: #e74c3c;
+font-size: 15px;
+text-align: center;
+  :hover {
+    cursor: pointer;
+    color: #c0392b;
+  }
+`;
 
 export {
   GlobalStyle,
@@ -96,4 +118,5 @@ export {
   ItemWrapper,
   ButtonWrapper,
   ThemeButton,
+  DeleteButtonStyled,
 };
