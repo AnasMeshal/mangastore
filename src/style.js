@@ -12,9 +12,9 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const TitleWrapper = styled.div`
-  background: #FFF;
+  background: ${(props) => props.theme.title};
   width: 80%;
-  border: black solid 2px;
+  border: ${(props) => props.theme.borderColor} solid 2px;
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -39,16 +39,16 @@ const ItemWrapper = styled.div`
   border: ${(props) => props.theme.borderColor} solid 3px;
   margin: 4px;
   border-radius: 10px;
-  background: #f1f2f6;
+  background: ${(props) => props.theme.mainColor};
 
   p {
-    color: black;
+    color: ${(props) => props.theme.textColor};
     font-weight: Bolder;
     text-align: center;
     font-size: 20px;
 
     &.item-price {
-      color: blue;
+      color: #27ae60;
       font-weight: bold;
       text-align: center;
       font-size: 20px;
@@ -69,6 +69,23 @@ const ListWrapper = styled.div`
   flex-wrap: Wrap;
 `;
 
+const ButtonWrapper = styled.div`
+display:flex;
+flex-direction: row;
+justify-content: center;
+margin-top: 3vh;
+margin-bottom: 3vh;
+`
+
+const ThemeButton = styled.button`
+font-size: 20px;
+background: ${(props) => props.theme.mainColor};
+color: ${(props) => props.theme.textColor};
+border: ${(props) => props.theme.borderColor} solid;
+border-radius: 10px;
+padding: 10px 20px;
+`
+
 export {
   GlobalStyle,
   TitleWrapper,
@@ -77,4 +94,6 @@ export {
   ListWrapper,
   ShopImage,
   ItemWrapper,
+  ButtonWrapper,
+  ThemeButton,
 };

@@ -1,5 +1,5 @@
 //React
-import React from "react";
+import React, { useState } from "react";
 
 //ThemeProvider
 import { ThemeProvider } from "styled-components";
@@ -14,17 +14,38 @@ import {
   Title,
   Description,
   ListWrapper,
+  ButtonWrapper,
+  ThemeButton,
 } from "./style";
 
 const theme = {
-  backgroundColor: "#ced6e0",
-  textColor: "black",
-  borderColor: "black",
+  lightTheme: {
+    backgroundColor: "#ced6e0",
+    textColor: "black",
+    borderColor: "black",
+    mainColor: "#f1f2f6",
+    title: "#fff",
+  },
+  darkTheme: {
+    backgroundColor: "#212529",
+    textColor: "white",
+    borderColor: "black",
+    mainColor: "#343a40",
+    title: "#6c757d",
+  },
 };
 
 function App() {
+  
+  const [currentTheme, setCurrentTheme] = useState("lightTheme")
+
+  const toogleTheme = () => {
+    setCurrentTheme(currentTheme === "lightTheme" ? "darkTheme" : "lightTheme")
+  }
+
   return (
-    <ThemeProvider theme={theme}>
+
+    <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
       <TitleWrapper>
         <Title>Welcome To Manga Store</Title>
@@ -34,7 +55,11 @@ function App() {
       <ListWrapper>
         <MangaList />
       </ListWrapper>
+      <ButtonWrapper>
+        <ThemeButton onClick={toogleTheme}>{currentTheme === "lightTheme" ? "Dark" : "Light"} Mode</ThemeButton>
+      </ButtonWrapper>
     </ThemeProvider>
+
   );
 }
 
