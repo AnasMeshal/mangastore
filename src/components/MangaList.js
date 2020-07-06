@@ -1,8 +1,5 @@
 //React
-import React, { useState } from "react";
-
-//Mangas
-import mangas from "../mangas";
+import React from "react";
 
 //Components
 import MangaItem from "./MangaItem";
@@ -10,16 +7,14 @@ import MangaItem from "./MangaItem";
 //Styles
 import { ListWrapper } from "../style";
 
-const MangaList = () => {
-  const [_mangas, setMangas] = useState(mangas);
-
-  const deleteManga = (mangaId) => {
-    const updatedMangas = _mangas.filter((manga) => manga.id !== mangaId);
-    setMangas(updatedMangas);
-  };
-
-  const mangaList = _mangas.map((manga) => (
-    <MangaItem manga={manga} deleteManga={deleteManga} key={manga.id} />
+const MangaList = (props) => {
+  const mangaList = props.mangas.map((manga) => (
+    <MangaItem
+      manga={manga}
+      deleteManga={props.deleteManga}
+      selectManga={props.selectManga}
+      key={manga.id}
+    />
   ));
 
   return <ListWrapper>{mangaList}</ListWrapper>;

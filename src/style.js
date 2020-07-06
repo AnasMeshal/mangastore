@@ -4,14 +4,14 @@ import { createGlobalStyle } from "styled-components";
 //Styled components
 import styled from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.backgroundColor};
     color: ${(props) => props.theme.textColor};
   }
 `;
 
-const TitleWrapper = styled.div`
+export const TitleWrapper = styled.div`
   background: ${(props) => props.theme.title};
   width: 80%;
   border: ${(props) => props.theme.borderColor} solid 2px;
@@ -25,14 +25,14 @@ const TitleWrapper = styled.div`
   text-align: center;
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   margin-bottom: 15px;
   :hover {
     cursor: default;
   }
 `;
 
-const Description = styled.h4`
+export const Description = styled.h4`
   text-align: center;
   font-family: Fjalla One, sans-serif;
   font-size: 20px;
@@ -41,7 +41,7 @@ const Description = styled.h4`
   }
 `;
 
-const ItemWrapper = styled.div`
+export const ItemWrapper = styled.div`
   border: ${(props) => props.theme.borderColor} solid 3px;
   margin: 4px;
   border-radius: 10px;
@@ -55,42 +55,44 @@ const ItemWrapper = styled.div`
     :hover {
       cursor: default;
     }
+  }
 
-    &.item-price {
-      color: #27ae60;
-      font-weight: bold;
-      text-align: center;
-      font-size: 20px;
-    }
+  .item-price {
+    color: #27ae60;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
   }
 `;
 
-const ShopImage = styled.img`
+
+
+export const ShopImage = styled.img`
   height: 400px;
   border-radius: 10px;
 `;
 
-const ListWrapper = styled.div`
+export const ListWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: Wrap;
 `;
 
-const ButtonWrapper = styled.div`
-display:flex;
-flex-direction: row;
-justify-content: center;
-margin-top: 3vh;
-margin-bottom: 3vh;
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 `;
 
-const ThemeButton = styled.button`
-font-size: 20px;
-background: ${(props) => props.theme.mainColor};
-color: ${(props) => props.theme.textColor};
-border: ${(props) => props.theme.borderColor} solid;
-border-radius: 10px;
-padding: 10px 20px;
+export const ThemeButton = styled.button`
+  font-size: 20px;
+  background: ${(props) => props.theme.mainColor};
+  color: ${(props) => props.theme.textColor};
+  border: ${(props) => props.theme.borderColor} solid;
+  border-radius: 10px;
+  padding: 10px 20px;
   :hover {
     cursor: pointer;
     opacity: 0.4;
@@ -98,25 +100,23 @@ padding: 10px 20px;
   }
 `;
 
-const DeleteButtonStyled = styled.h5`
-color: #e74c3c;
-font-size: 15px;
-text-align: center;
+export const DeleteButtonStyled = styled.h5`
+  color: #e74c3c;
+  font-size: 15px;
+  text-align: center;
   :hover {
     cursor: pointer;
     color: #c0392b;
   }
 `;
 
-export {
-  GlobalStyle,
-  TitleWrapper,
-  Title,
-  Description,
-  ListWrapper,
-  ShopImage,
-  ItemWrapper,
-  ButtonWrapper,
-  ThemeButton,
-  DeleteButtonStyled,
-};
+export const MangaDetailWrapper = styled.div`
+  display: block;
+  background-color: ${(props) => props.theme.mainColor};
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 2em;
+  border: ${(props) => props.theme.borderColor} solid;
+  width: 90%;
+`;

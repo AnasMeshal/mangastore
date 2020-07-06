@@ -6,6 +6,8 @@ import { ThemeProvider } from "styled-components";
 
 //Components
 import MangaList from "./components/MangaList";
+import MangaDetail from "./components/MangaDetail";
+import mangas from "./mangas";
 
 //Styles
 import {
@@ -36,15 +38,33 @@ const theme = {
 };
 
 function App() {
-  
-  const [currentTheme, setCurrentTheme] = useState("lightTheme")
+  const [currentTheme, setCurrentTheme] = useState("lightTheme");
+  const [manga, setManga] = useState(null);
+  const [_mangas, setMangas] = useState(mangas);
+
+  const deleteManga = (mangaId) => {
+    const updatedMangas = _mangas.filter((manga) => manga.id !== mangaId);
+    setMangas(updatedMangas);
+    setManga(null)
+  };
+
+  const setView = () => 
+  manga ? (
+    <MangaDetail manga={manga} deleteManga={deleteManga} />
+  ) : (
+    <MangaList mangas={_mangas} deleteManga={deleteManga} selectManga={selectManga} />
+  )
+
+  const selectManga = (mangaId) => {
+    const selectedManga = mangas.find((manga) => manga.id === mangaId);
+    setManga(selectedManga);
+  };
 
   const toogleTheme = () => {
-    setCurrentTheme(currentTheme === "lightTheme" ? "darkTheme" : "lightTheme")
-  }
+    setCurrentTheme(currentTheme === "lightTheme" ? "darkTheme" : "lightTheme");
+  };
 
   return (
-
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
       <TitleWrapper>
@@ -53,13 +73,15 @@ function App() {
       </TitleWrapper>
 
       <ListWrapper>
-        <MangaList />
+      {setView()}
       </ListWrapper>
+
       <ButtonWrapper>
-        <ThemeButton onClick={toogleTheme}>{currentTheme === "lightTheme" ? "Dark" : "Light"} Mode</ThemeButton>
+        <ThemeButton onClick={toogleTheme}>
+          {currentTheme === "lightTheme" ? "Dark" : "Light"} Mode
+        </ThemeButton>
       </ButtonWrapper>
     </ThemeProvider>
-
   );
 }
 
