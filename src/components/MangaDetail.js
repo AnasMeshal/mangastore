@@ -2,27 +2,32 @@
 import React from "react";
 
 // Styles
-import { DeleteButtonStyled, MangaDetailWrapper } from "../style";
+import {
+  DeleteButtonStyled,
+  MangaDetailWrapper,
+  ChangeViewButton,
+} from "../style";
+
+//Components
+import DeleteButton from "./buttons/DeleteButton";
 
 const MangaDetail = (props) => {
   const manga = props.manga;
 
-  const handleDelete = () => {
-    props.deleteManga(manga.id);
+  const handleView = () => {
+    props.changeView();
   };
 
   return (
-    <MangaDetailWrapper>
+    <MangaDetailWrapper onClick={handleView}>
       <h1>{manga.name}</h1>
       <img src={manga.img} alt={manga.name} />
-      <p className="item-price">price: {manga.price} KD</p>
-      <p>
+      <p>price: {manga.price} KD</p>
+      <p className="description">
         {manga.name} {manga.description}
       </p>
-      <DeleteButtonStyled onClick={handleDelete}>
-        Delete Manga
-      </DeleteButtonStyled>
-      
+      <DeleteButton mangaId={manga.id} deleteManga={props.deleteManga} />
+      <ChangeViewButton>Back</ChangeViewButton>
     </MangaDetailWrapper>
   );
 };

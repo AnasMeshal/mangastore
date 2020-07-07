@@ -32,7 +32,7 @@ const mangas = [
 
   {
     id: "4",
-    name: "Hunter x Hunter",
+    name: "Hunter x Hunter Manga",
     description: " is an Adventure, fantasy and Martial Art manga.",
     writter: "'Yoshihiro Togashi'",
     price: "2",

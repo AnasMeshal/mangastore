@@ -4,12 +4,12 @@ import React from "react";
 //Styles
 import { ShopImage, ItemWrapper, DeleteButtonStyled } from "../style";
 
+//Components
+import DeleteButton from "./buttons/DeleteButton";
+
 const MangaItem = (props) => {
   const manga = props.manga;
 
-  const handleDelete = () => {
-    props.deleteManga(manga.id);
-  };
   return (
     <ItemWrapper>
       <ShopImage
@@ -19,9 +19,7 @@ const MangaItem = (props) => {
       />
       <p>{manga.name}</p>
       <p className="item-price">{manga.price}KD</p>
-      <DeleteButtonStyled onClick={handleDelete}>
-        Delete Manga
-      </DeleteButtonStyled>
+      <DeleteButton mangaId={manga.id} deleteManga={props.deleteManga} />
     </ItemWrapper>
   );
 };

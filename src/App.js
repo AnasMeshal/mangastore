@@ -22,10 +22,10 @@ import {
 
 const theme = {
   lightTheme: {
-    backgroundColor: "#ced6e0",
+    backgroundColor: "#A4B0BD",
     textColor: "black",
     borderColor: "black",
-    mainColor: "#f1f2f6",
+    mainColor: "#EAF0F1",
     title: "#fff",
   },
   darkTheme: {
@@ -45,15 +45,27 @@ function App() {
   const deleteManga = (mangaId) => {
     const updatedMangas = _mangas.filter((manga) => manga.id !== mangaId);
     setMangas(updatedMangas);
-    setManga(null)
+    setManga(null);
   };
 
-  const setView = () => 
-  manga ? (
-    <MangaDetail manga={manga} deleteManga={deleteManga} />
-  ) : (
-    <MangaList mangas={_mangas} deleteManga={deleteManga} selectManga={selectManga} />
-  )
+  const changeView = () => {
+    setManga(null);
+  };
+
+  const setView = () =>
+    manga ? (
+      <MangaDetail
+        changeView={changeView}
+        manga={manga}
+        deleteManga={deleteManga}
+      />
+    ) : (
+      <MangaList
+        mangas={_mangas}
+        deleteManga={deleteManga}
+        selectManga={selectManga}
+      />
+    );
 
   const selectManga = (mangaId) => {
     const selectedManga = mangas.find((manga) => manga.id === mangaId);
@@ -72,9 +84,7 @@ function App() {
         <Description>Here You Can Find EveryThing About Manga</Description>
       </TitleWrapper>
 
-      <ListWrapper>
       {setView()}
-      </ListWrapper>
 
       <ButtonWrapper>
         <ThemeButton onClick={toogleTheme}>

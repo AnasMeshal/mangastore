@@ -1,14 +1,21 @@
 //React
-import React from "react";
+import React, { useState } from "react";
 
 //Components
 import MangaItem from "./MangaItem";
+import SearchBar from "./SearchBar";
 
 //Styles
 import { ListWrapper } from "../style";
 
 const MangaList = (props) => {
-  const mangaList = props.mangas.map((manga) => (
+  const [query, setQuery] = useState("");
+
+  const filteredManga = props.mangas.filter((manga) =>
+    manga.name.toUpperCase().includes(query.toUpperCase())
+  );
+
+  const mangaList = filteredManga.map((manga) => (
     <MangaItem
       manga={manga}
       deleteManga={props.deleteManga}
@@ -17,7 +24,12 @@ const MangaList = (props) => {
     />
   ));
 
-  return <ListWrapper>{mangaList}</ListWrapper>;
+  return (
+    <>
+      <SearchBar setQuery={setQuery} searchMangas={props.searchMangas} />
+      <ListWrapper>{mangaList}</ListWrapper>
+    </>
+  );
 };
 
 export default MangaList;

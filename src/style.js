@@ -65,11 +65,10 @@ export const ItemWrapper = styled.div`
   }
 `;
 
-
-
 export const ShopImage = styled.img`
   height: 400px;
   border-radius: 10px;
+  border-bottom: ${(props) => props.theme.borderColor} solid 3px;
 `;
 
 export const ListWrapper = styled.div`
@@ -110,6 +109,16 @@ export const DeleteButtonStyled = styled.h5`
   }
 `;
 
+export const ChangeViewButton = styled.h5`
+  color: #2ecc72;
+  font-size: 15px;
+  text-align: center;
+  :hover {
+    cursor: pointer;
+    color: #26ae60;
+  }
+`;
+
 export const MangaDetailWrapper = styled.div`
   display: block;
   background-color: ${(props) => props.theme.mainColor};
@@ -118,5 +127,40 @@ export const MangaDetailWrapper = styled.div`
   margin-left: auto;
   margin-top: 2em;
   border: ${(props) => props.theme.borderColor} solid;
-  width: 90%;
+  width: 80%;
+  h1 {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 25px;
+    font-weight: bold;
+
+    &.description {
+      font-weight: 400;
+    }
+  }
+
+  img {
+    border-radius: 10px;
+    border-bottom: ${(props) => props.theme.borderColor} solid;
+    height: 400px;
+  }
+`;
+
+export const SearchWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  text-align: center;
+`;
+
+export const Search = styled.input`
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 30%;
+  font-size: 18px;
+  padding: 11px;
+  border : ${(props) => props.theme.borderColor} solid;
+  border-radius: 15px;
 `;
