@@ -2,6 +2,7 @@ const mangas = [
   {
     id: "1",
     name: "Attack on Titan Manga",
+    slug: "attack-on-titan",
     description:
       " is an Action, Dark fantasy and Post-apocalyptic manga.",
       writter: "'Hajime Isayama'",
@@ -13,6 +14,7 @@ const mangas = [
   {
     id: "2",
     name: "Kimetsu No Yaiba Manga",
+    slug: "kimetsu-no-yaiba",
     description: " is an Adventure, Dark fantasy and Martial arts manga.",
     writter: "'Koyoharu Gotōge'",
     price: "2.5",
@@ -23,6 +25,7 @@ const mangas = [
   {
     id: "3",
     name: "One Piece Manga",
+    slug: "one-piece",
     description: " is an Adventure and fantasy manga",
     writter: "'Eiichiro Oda'",
     price: "3",
@@ -33,6 +36,7 @@ const mangas = [
   {
     id: "4",
     name: "Hunter x Hunter Manga",
+    slug: "hunter-x-hunter",
     description: " is an Adventure, fantasy and Martial Art manga.",
     writter: "'Yoshihiro Togashi'",
     price: "2",

@@ -1,5 +1,7 @@
 //React
 import React, { useState } from "react";
+import { Route, Switch } from "react-router";
+import { Link } from "react-router-dom";
 
 //ThemeProvider
 import { ThemeProvider } from "styled-components";
@@ -8,21 +10,15 @@ import { ThemeProvider } from "styled-components";
 import MangaList from "./components/MangaList";
 import MangaDetail from "./components/MangaDetail";
 import mangas from "./mangas";
+import Home from "./components/Home";
 
 //Styles
-import {
-  GlobalStyle,
-  TitleWrapper,
-  Title,
-  Description,
-  ListWrapper,
-  ButtonWrapper,
-  ThemeButton,
-} from "./style";
+import { GlobalStyle, ButtonWrapper, ThemeButton } from "./style";
 
 const theme = {
   lightTheme: {
     backgroundColor: "#A4B0BD",
+    backgroundImage: "/assets/white.jpg",
     textColor: "black",
     borderColor: "black",
     mainColor: "#EAF0F1",
@@ -30,8 +26,9 @@ const theme = {
   },
   darkTheme: {
     backgroundColor: "#212529",
+    backgroundImage: "/assets/dark.jpg",
     textColor: "white",
-    borderColor: "black",
+    borderColor: "white",
     mainColor: "#343a40",
     title: "#6c757d",
   },
@@ -39,37 +36,12 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("lightTheme");
-  const [manga, setManga] = useState(null);
   const [_mangas, setMangas] = useState(mangas);
 
   const deleteManga = (mangaId) => {
     const updatedMangas = _mangas.filter((manga) => manga.id !== mangaId);
     setMangas(updatedMangas);
-    setManga(null);
-  };
 
-  const changeView = () => {
-    setManga(null);
-  };
-
-  const setView = () =>
-    manga ? (
-      <MangaDetail
-        changeView={changeView}
-        manga={manga}
-        deleteManga={deleteManga}
-      />
-    ) : (
-      <MangaList
-        mangas={_mangas}
-        deleteManga={deleteManga}
-        selectManga={selectManga}
-      />
-    );
-
-  const selectManga = (mangaId) => {
-    const selectedManga = mangas.find((manga) => manga.id === mangaId);
-    setManga(selectedManga);
   };
 
   const toogleTheme = () => {
@@ -79,14 +51,25 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-      <TitleWrapper>
-        <Title>Welcome To Manga Store</Title>
-        <Description>Here You Can Find EveryThing About Manga</Description>
-      </TitleWrapper>
 
-      {setView()}
+      <Switch>
+        <Route path="/mangas/:mangaSlug">
+          <MangaDetail
+            mangas={_mangas}
+            deleteManga={deleteManga}
+          />
+        </Route>
+        <Route path="/mangas">
+          <MangaList mangas={_mangas} deleteManga={deleteManga} />
+        </Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
 
       <ButtonWrapper>
+        <Link to="/"><ThemeButton>Home</ThemeButton></Link>
+        <Link to="/mangas"><ThemeButton>Mangas</ThemeButton></Link>
         <ThemeButton onClick={toogleTheme}>
           {currentTheme === "lightTheme" ? "Dark" : "Light"} Mode
         </ThemeButton>

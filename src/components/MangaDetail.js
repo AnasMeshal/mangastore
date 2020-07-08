@@ -1,9 +1,9 @@
 //React
 import React from "react";
+import { useParams, useHistory } from "react-router-dom";
 
 // Styles
 import {
-  DeleteButtonStyled,
   MangaDetailWrapper,
   ChangeViewButton,
 } from "../style";
@@ -12,14 +12,18 @@ import {
 import DeleteButton from "./buttons/DeleteButton";
 
 const MangaDetail = (props) => {
-  const manga = props.manga;
 
-  const handleView = () => {
-    props.changeView();
-  };
+  const { mangaSlug } = useParams();
+  const history = useHistory();
+
+  const goBack = () => {
+    history.push("/mangas");
+  }
+
+  const manga = props.mangas.find((manga) => manga.slug === mangaSlug)
 
   return (
-    <MangaDetailWrapper onClick={handleView}>
+    <MangaDetailWrapper onClick={goBack}>
       <h1>{manga.name}</h1>
       <img src={manga.img} alt={manga.name} />
       <p>price: {manga.price} KD</p>

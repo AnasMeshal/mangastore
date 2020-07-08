@@ -6,7 +6,10 @@ import styled from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${(props) => props.theme.backgroundColor};
+    background-image: url(${(props) => props.theme.backgroundImage});
+    background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
     color: ${(props) => props.theme.textColor};
   }
 `;
@@ -67,8 +70,8 @@ export const ItemWrapper = styled.div`
 
 export const ShopImage = styled.img`
   height: 400px;
-  border-radius: 10px;
   border-bottom: ${(props) => props.theme.borderColor} solid 3px;
+  border-radius: 10px;
 `;
 
 export const ListWrapper = styled.div`
@@ -92,6 +95,8 @@ export const ThemeButton = styled.button`
   border: ${(props) => props.theme.borderColor} solid;
   border-radius: 10px;
   padding: 10px 20px;
+  margin=right: 20px;
+  margin-left: 20px;
   :hover {
     cursor: pointer;
     opacity: 0.4;
@@ -161,6 +166,7 @@ export const Search = styled.input`
   width: 30%;
   font-size: 18px;
   padding: 11px;
-  border : ${(props) => props.theme.borderColor} solid;
+  border: ${(props) => props.theme.borderColor} solid;
   border-radius: 15px;
 `;
+
