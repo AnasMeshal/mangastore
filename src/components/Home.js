@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       <TitleWrapper>
-        <Title>Welcome To Manga Store</Title>
+        <Title>Manga Store</Title>
         <Description>Here You Can Find EveryThing About Manga</Description>
       </TitleWrapper>
     </>

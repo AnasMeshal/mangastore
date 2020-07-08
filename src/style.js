@@ -2,25 +2,25 @@
 import { createGlobalStyle } from "styled-components";
 
 //React
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 //Styled components
 import styled from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    background-image: url(${(props) => props.theme.backgroundImage});
+    background-image: url(${({ theme }) => theme.backgroundImage});
     background-attachment: fixed;
       background-position: center;
       background-size: cover;
-    color: ${(props) => props.theme.textColor};
+    color: ${({ theme }) => theme.textColor};
   }
 `;
 
 export const TitleWrapper = styled.div`
-  background: ${(props) => props.theme.title};
+  background: ${({ theme }) => theme.mainColor};
   width: 80%;
-  border: ${(props) => props.theme.borderColor} solid 2px;
+  border: ${({ theme }) => theme.borderColor} solid 2px;
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -54,13 +54,19 @@ export const Description = styled.h4`
 `;
 
 export const ItemWrapper = styled.div`
-  border: ${(props) => props.theme.borderColor} solid 3px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  border: ${({ theme }) => theme.borderColor} solid 3px;
   margin: 4px;
   border-radius: 10px;
-  background: ${(props) => props.theme.mainColor};
+  background: ${({ theme }) => theme.mainColor};
 
   p {
-    color: ${(props) => props.theme.textColor};
+    color: ${({ theme }) => theme.textColor};
+    margin-top: 1em;
     font-weight: Bolder;
     text-align: center;
     font-size: 20px;
@@ -79,7 +85,8 @@ export const ItemWrapper = styled.div`
 
 export const ShopImage = styled.img`
   height: 400px;
-  border-bottom: ${(props) => props.theme.borderColor} solid 3px;
+  width: 250px;
+  border-bottom: ${({ theme }) => theme.borderColor} solid 3px;
   border-radius: 10px;
 `;
 
@@ -87,6 +94,7 @@ export const ListWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: Wrap;
+  margin-bottom: 2em;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -99,9 +107,9 @@ export const ButtonWrapper = styled.div`
 
 export const ThemeButton = styled.button`
   font-size: 20px;
-  background: ${(props) => props.theme.mainColor};
-  color: ${(props) => props.theme.textColor};
-  border: ${(props) => props.theme.borderColor} solid;
+  background: ${({ theme }) => theme.mainColor};
+  color: ${({ theme }) => theme.textColor};
+  border: ${({ theme }) => theme.borderColor} solid;
   border-radius: 10px;
   padding: 10px 20px;
   margin=right: 20px;
@@ -115,8 +123,10 @@ export const ThemeButton = styled.button`
 
 export const DeleteButtonStyled = styled.h5`
   color: #e74c3c;
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
   :hover {
     cursor: pointer;
     color: #c0392b;
@@ -125,8 +135,10 @@ export const DeleteButtonStyled = styled.h5`
 
 export const ChangeViewButton = styled.h5`
   color: #2ecc72;
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
   :hover {
     cursor: pointer;
     color: #26ae60;
@@ -135,19 +147,24 @@ export const ChangeViewButton = styled.h5`
 
 export const MangaDetailWrapper = styled.div`
   display: block;
-  background-color: ${(props) => props.theme.mainColor};
+  background-color: ${({ theme }) => theme.mainColor};
   text-align: center;
   margin-right: auto;
   margin-left: auto;
   margin-top: 2em;
-  border: ${(props) => props.theme.borderColor} solid;
-  width: 80%;
+  border: ${({ theme }) => theme.borderColor} solid;
+  width: 70%;
+  border-radius: 30px;
+  margin-bottom: 2em;
   h1 {
-    font-size: 30px;
+    font-size: 50px;
     font-weight: bold;
+    margin-top: 0.2em;
+    margin-bottom: 0.3em;
   }
 
   p {
+    margin-top: 0.2em;
     font-size: 25px;
     font-weight: bold;
 
@@ -158,7 +175,7 @@ export const MangaDetailWrapper = styled.div`
 
   img {
     border-radius: 10px;
-    border-bottom: ${(props) => props.theme.borderColor} solid;
+    border-bottom: ${({ theme }) => theme.borderColor} solid;
     height: 400px;
   }
 `;
@@ -175,21 +192,37 @@ export const Search = styled.input`
   width: 30%;
   font-size: 18px;
   padding: 11px;
-  border: ${(props) => props.theme.borderColor} solid;
+  border: ${({ theme }) => theme.borderColor} 3px solid;
   border-radius: 15px;
 `;
 
 export const NavStyled = styled.nav`
-  background-color: ${(props) => props.theme.navColor};
+  border-bottom: ${({ theme }) => theme.borderColor} solid 1px;
 `;
 
+export const WelcomeImgWrapper = styled(Link)`
+  &:hover: {
+    text-direction: none;
+    color: red;
+  }
+`;
+
+export const WelcomeImage = styled.img`
+  width: 250px;
+`;
 export const NavItem = styled(NavLink)`
-  color: black;
-  margin-top: auto;
-  margin-bottom: auto;
+  color: ${({ theme }) => theme.textColor};
+  line-height: 40px;
+  margin-left: 0.5em;
+  font-size: 20px;
+  padding: 10px 30px;
+
+  &.active {
+    text-decoration: underline;
+  }
 `;
 
 export const NavTitle = styled.h1`
-font-size: 35px;
-color: ${(props) => props.theme.textColor};
+  font-size: 35px;
+  color: ${({ theme }) => theme.textColor};
 `;

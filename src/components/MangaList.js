@@ -1,7 +1,6 @@
 //React
 import React, { useState } from "react";
 
-
 //Components
 import MangaItem from "./MangaItem";
 import SearchBar from "./SearchBar";
@@ -9,24 +8,23 @@ import SearchBar from "./SearchBar";
 //Styles
 import { ListWrapper } from "../style";
 
-const MangaList = (props) => {
+const MangaList = ({ mangas, deleteManga, searchMangas }) => {
   const [query, setQuery] = useState("");
-  
-  const filteredManga = props.mangas.filter((manga) =>
-    manga.name.toUpperCase().includes(query.toUpperCase())
+
+  const filteredManga = mangas.filter(
+    (manga) =>
+      manga.name.toUpperCase().includes(query.toUpperCase()) ||
+      manga.writter.toUpperCase().includes(query.toUpperCase()) ||
+      manga.price[0].toUpperCase().includes(query.toUpperCase())
   );
 
   const mangaList = filteredManga.map((manga) => (
-    <MangaItem
-      manga={manga}
-      deleteManga={props.deleteManga}
-      key={manga.id}
-    />
+    <MangaItem manga={manga} deleteManga={deleteManga} key={manga.id} />
   ));
 
   return (
     <>
-      <SearchBar setQuery={setQuery} searchMangas={props.searchMangas} />
+      <SearchBar setQuery={setQuery} searchMangas={searchMangas} />
       <ListWrapper>{mangaList}</ListWrapper>
     </>
   );

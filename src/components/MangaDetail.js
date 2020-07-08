@@ -11,7 +11,7 @@ import {
 //Components
 import DeleteButton from "./buttons/DeleteButton";
 
-const MangaDetail = (props) => {
+const MangaDetail = ({ mangas, deleteManga,  }) => {
 
   const { mangaSlug } = useParams();
   const history = useHistory();
@@ -20,7 +20,7 @@ const MangaDetail = (props) => {
     history.push("/mangas");
   }
 
-  const manga = props.mangas.find((manga) => manga.slug === mangaSlug)
+  const manga = mangas.find((manga) => manga.slug === mangaSlug)
   if (!manga) return <Redirect to="/mangas" />;
 
   return (
@@ -31,7 +31,10 @@ const MangaDetail = (props) => {
       <p className="description">
         {manga.name} {manga.description}
       </p>
-      <DeleteButton mangaId={manga.id} deleteManga={props.deleteManga} />
+      <p className="description">
+        Wrriten By: {manga.writter}
+      </p>
+      <DeleteButton mangaId={manga.id} deleteManga={deleteManga} />
       <ChangeViewButton>Back</ChangeViewButton>
     </MangaDetailWrapper>
   );

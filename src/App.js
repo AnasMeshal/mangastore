@@ -1,7 +1,8 @@
 //React
 import React, { useState } from "react";
 import { Route, Switch } from "react-router";
-import { Link } from "react-router-dom";
+import lightLogo from "./welcome-light.png";
+import darkLogo from "./welcome-dark.png";
 
 //ThemeProvider
 import { ThemeProvider } from "styled-components";
@@ -14,26 +15,23 @@ import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 
 //Styles
-import { GlobalStyle, ButtonWrapper, ThemeButton } from "./style";
+import { GlobalStyle } from "./style";
 
 const theme = {
   lightTheme: {
-    backgroundColor: "#A4B0BD",
     backgroundImage: "/assets/white.jpg",
     textColor: "black",
     borderColor: "black",
-    mainColor: "#EAF0F1",
+    mainColor: "#fff",
     title: "#fff",
-    navColor: "#fff"
+    navColor: "#fff",
   },
   darkTheme: {
-    backgroundColor: "#212529",
     backgroundImage: "/assets/dark.jpg",
     textColor: "white",
     borderColor: "white",
-    mainColor: "#343a40",
-    title: "#6c757d",
-    navColor: "black"
+    mainColor: "#353b48",
+    navColor: "black",
   },
 };
 
@@ -44,7 +42,6 @@ function App() {
   const deleteManga = (mangaId) => {
     const updatedMangas = _mangas.filter((manga) => manga.id !== mangaId);
     setMangas(updatedMangas);
-
   };
 
   const toogleTheme = () => {
@@ -54,16 +51,18 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-      <NavBar currentTheme={currentTheme} toogleTheme={toogleTheme}  />
+      <NavBar
+        currentTheme={currentTheme}
+        toogleTheme={toogleTheme}
+        lightLogo={lightLogo}
+        darkLogo={darkLogo}
+      />
 
       <Switch>
-        <Route path="/mangas/:mangaSlug">
-          <MangaDetail
-            mangas={_mangas}
-            deleteManga={deleteManga}
-          />
+        <Route exact path="/mangas/:mangaSlug">
+          <MangaDetail mangas={_mangas} deleteManga={deleteManga} />
         </Route>
-        <Route path="/mangas">
+        <Route exact path="/mangas">
           <MangaList mangas={_mangas} deleteManga={deleteManga} />
         </Route>
         <Route exact path="/">

@@ -4,10 +4,9 @@ import React from "react";
 //Styles
 import { DeleteButtonStyled } from "../../style";
 
-
-const DeleteButton = (props) => {
+const DeleteButton = ({ deleteManga, mangaId }) => {
   const handleDelete = () => {
-    props.deleteManga(props.mangaId);
+    deleteManga(mangaId);
   };
 
   return <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>;

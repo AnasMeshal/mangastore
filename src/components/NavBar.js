@@ -1,15 +1,18 @@
 //React
 import React from "react";
-import { NavLink } from "react-router-dom";
 
 //Styles
-import { ThemeButton, NavItem, NavStyled, NavTitle } from "../style";
+import {
+  ThemeButton,
+  NavItem,
+  NavStyled,
+  WelcomeImgWrapper,
+  WelcomeImage,
+} from "../style";
 
-const NavBar = (props) => {
+const NavBar = ({ currentTheme, lightLogo, darkLogo, toogleTheme }) => {
   return (
-    <NavStyled className="navbar navbar-expand-lg">
-      <NavTitle>Welcome!</NavTitle>
-
+    <NavStyled className="navbar navbar-expand">
       <button
         class="navbar-toggler"
         type="button"
@@ -21,22 +24,23 @@ const NavBar = (props) => {
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      <WelcomeImgWrapper to="/">
+        <WelcomeImage
+          src={currentTheme === "darkTheme" ? lightLogo : darkLogo}
+          alt="logo"
+        />
+      </WelcomeImgWrapper>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <NavItem className="nav-link" to="/">
-              Home
-            </NavItem>
-          </li>
-          <li class="nav-item active">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item m-auto">
             <NavItem className="nav-link" to="/mangas">
-              Mangas
+              Mangas <span class="sr-only">(current)</span>
             </NavItem>
           </li>
-          <li class="nav-item active">
-            <ThemeButton className="nav-link" onClick={props.toogleTheme}>
-              {props.currentTheme === "lightTheme" ? "Dark" : "Light"} Mode
+          <li class="nav-item m-auto mr-auto">
+            <ThemeButton className="nav-link" onClick={toogleTheme}>
+              {currentTheme === "lightTheme" ? "Dark" : "Light"} Mode
             </ThemeButton>
           </li>
         </ul>
