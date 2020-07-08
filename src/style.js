@@ -1,6 +1,9 @@
 //Global style
 import { createGlobalStyle } from "styled-components";
 
+//React
+import { NavLink } from "react-router-dom";
+
 //Styled components
 import styled from "styled-components";
 
@@ -21,24 +24,30 @@ export const TitleWrapper = styled.div`
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 30px;
-  margin-top: 20px;
+  margin-top: 3em;
   font-family: Galada; cursive;
   font-size: 25px;
   text-align: center;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
 `;
 
 export const Title = styled.h1`
-  margin-bottom: 15px;
+  margin-top: auto;
+  font-size: 65px;
   :hover {
     cursor: default;
   }
 `;
 
 export const Description = styled.h4`
+  margin-bottom: auto;
   text-align: center;
   font-family: Fjalla One, sans-serif;
-  font-size: 20px;
+  font-size: 25px;
   :hover {
     cursor: default;
   }
@@ -170,3 +179,17 @@ export const Search = styled.input`
   border-radius: 15px;
 `;
 
+export const NavStyled = styled.nav`
+  background-color: ${(props) => props.theme.navColor};
+`;
+
+export const NavItem = styled(NavLink)`
+  color: black;
+  margin-top: auto;
+  margin-bottom: auto;
+`;
+
+export const NavTitle = styled.h1`
+font-size: 35px;
+color: ${(props) => props.theme.textColor};
+`;

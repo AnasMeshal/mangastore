@@ -11,6 +11,7 @@ import MangaList from "./components/MangaList";
 import MangaDetail from "./components/MangaDetail";
 import mangas from "./mangas";
 import Home from "./components/Home";
+import NavBar from "./components/NavBar";
 
 //Styles
 import { GlobalStyle, ButtonWrapper, ThemeButton } from "./style";
@@ -23,6 +24,7 @@ const theme = {
     borderColor: "black",
     mainColor: "#EAF0F1",
     title: "#fff",
+    navColor: "#fff"
   },
   darkTheme: {
     backgroundColor: "#212529",
@@ -31,6 +33,7 @@ const theme = {
     borderColor: "white",
     mainColor: "#343a40",
     title: "#6c757d",
+    navColor: "black"
   },
 };
 
@@ -51,6 +54,7 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
+      <NavBar currentTheme={currentTheme} toogleTheme={toogleTheme}  />
 
       <Switch>
         <Route path="/mangas/:mangaSlug">
@@ -66,14 +70,6 @@ function App() {
           <Home />
         </Route>
       </Switch>
-
-      <ButtonWrapper>
-        <Link to="/"><ThemeButton>Home</ThemeButton></Link>
-        <Link to="/mangas"><ThemeButton>Mangas</ThemeButton></Link>
-        <ThemeButton onClick={toogleTheme}>
-          {currentTheme === "lightTheme" ? "Dark" : "Light"} Mode
-        </ThemeButton>
-      </ButtonWrapper>
     </ThemeProvider>
   );
 }

@@ -1,6 +1,6 @@
 //React
 import React from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Redirect } from "react-router-dom";
 
 // Styles
 import {
@@ -21,6 +21,7 @@ const MangaDetail = (props) => {
   }
 
   const manga = props.mangas.find((manga) => manga.slug === mangaSlug)
+  if (!manga) return <Redirect to="/mangas" />;
 
   return (
     <MangaDetailWrapper onClick={goBack}>
