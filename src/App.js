@@ -22,7 +22,7 @@ const theme = {
     backgroundImage: "/assets/white.jpg",
     textColor: "black",
     borderColor: "black",
-    mainColor: "#fff",
+    mainColor: "#EAF0F1",
     title: "#fff",
     navColor: "#fff",
   },
@@ -44,7 +44,7 @@ function App() {
     setMangas(updatedMangas);
   };
 
-  const toogleTheme = () => {
+  const toggleTheme = () => {
     setCurrentTheme(currentTheme === "lightTheme" ? "darkTheme" : "lightTheme");
   };
 
@@ -52,8 +52,8 @@ function App() {
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
       <NavBar
+        toggleTheme={toggleTheme}
         currentTheme={currentTheme}
-        toogleTheme={toogleTheme}
         lightLogo={lightLogo}
         darkLogo={darkLogo}
       />

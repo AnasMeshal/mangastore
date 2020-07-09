@@ -1,6 +1,7 @@
 //React
 import React from "react";
 import { useParams, useHistory, Redirect } from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 // Styles
 import {
@@ -24,6 +25,10 @@ const MangaDetail = ({ mangas, deleteManga,  }) => {
   if (!manga) return <Redirect to="/mangas" />;
 
   return (
+    <>
+    <Helmet>
+      <title>{manga.name} manga</title>
+    </Helmet>
     <MangaDetailWrapper onClick={goBack}>
       <h1>{manga.name}</h1>
       <img src={manga.img} alt={manga.name} />
@@ -37,6 +42,7 @@ const MangaDetail = ({ mangas, deleteManga,  }) => {
       <DeleteButton mangaId={manga.id} deleteManga={deleteManga} />
       <ChangeViewButton>Back</ChangeViewButton>
     </MangaDetailWrapper>
+    </>
   );
 };
 

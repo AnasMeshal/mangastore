@@ -1,5 +1,6 @@
 //React
 import React, { useState } from "react";
+import {Helmet} from "react-helmet";
 
 //Components
 import MangaItem from "./MangaItem";
@@ -24,6 +25,9 @@ const MangaList = ({ mangas, deleteManga, searchMangas }) => {
 
   return (
     <>
+    <Helmet>
+      <title>Available Mangas</title>
+    </Helmet>
       <SearchBar setQuery={setQuery} searchMangas={searchMangas} />
       <ListWrapper>{mangaList}</ListWrapper>
     </>

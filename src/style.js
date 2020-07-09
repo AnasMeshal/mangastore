@@ -14,6 +14,8 @@ export const GlobalStyle = createGlobalStyle`
       background-position: center;
       background-size: cover;
     color: ${({ theme }) => theme.textColor};
+      user-drag: none;
+  user-select: none;
   }
 `;
 
@@ -194,10 +196,12 @@ export const Search = styled.input`
   padding: 11px;
   border: ${({ theme }) => theme.borderColor} 3px solid;
   border-radius: 15px;
+  outline: none;
 `;
 
 export const NavStyled = styled.nav`
   border-bottom: ${({ theme }) => theme.borderColor} solid 1px;
+  background-color: ${({ theme }) => theme.navColor};
 `;
 
 export const WelcomeImgWrapper = styled(Link)`
@@ -225,4 +229,9 @@ export const NavItem = styled(NavLink)`
 export const NavTitle = styled.h1`
   font-size: 35px;
   color: ${({ theme }) => theme.textColor};
+`;
+
+export const TitleDarkTheme = styled.label`
+font-size: 20px;
+
 `;
