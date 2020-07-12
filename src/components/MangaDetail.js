@@ -37,7 +37,7 @@ const MangaDetail = ({ mangas, deleteManga,  }) => {
         {manga.name} {manga.description}
       </p>
       <p className="description">
-        Wrriten By: {manga.writter}
+        Written By: {manga.author}
       </p>
       <DeleteButton mangaId={manga.id} deleteManga={deleteManga} />
       <ChangeViewButton>Back</ChangeViewButton>

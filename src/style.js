@@ -11,11 +11,11 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-image: url(${({ theme }) => theme.backgroundImage});
     background-attachment: fixed;
-      background-position: center;
-      background-size: cover;
+    background-position: center;
+    background-size: cover;
     color: ${({ theme }) => theme.textColor};
-      user-drag: none;
-  user-select: none;
+    user-drag: none;
+    user-select: none;
   }
 `;
 
@@ -232,6 +232,14 @@ export const NavTitle = styled.h1`
 `;
 
 export const TitleDarkTheme = styled.label`
-font-size: 20px;
+  font-size: 20px;
+`;
 
+export const AddButtonStyled = styled.button`
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 1vh 3vw;
 `;

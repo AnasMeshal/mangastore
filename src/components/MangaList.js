@@ -1,22 +1,22 @@
 //React
 import React, { useState } from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 //Components
 import MangaItem from "./MangaItem";
 import SearchBar from "./SearchBar";
+import AddButton from "../components/buttons/AddButton ";
 
 //Styles
 import { ListWrapper } from "../style";
 
-const MangaList = ({ mangas, deleteManga, searchMangas }) => {
+const MangaList = ({ mangas, deleteManga, createManga}) => {
   const [query, setQuery] = useState("");
 
   const filteredManga = mangas.filter(
     (manga) =>
       manga.name.toUpperCase().includes(query.toUpperCase()) ||
-      manga.writter.toUpperCase().includes(query.toUpperCase()) ||
-      manga.price[0].toUpperCase().includes(query.toUpperCase())
+      manga.author.toUpperCase().includes(query.toUpperCase())
   );
 
   const mangaList = filteredManga.map((manga) => (
@@ -25,10 +25,11 @@ const MangaList = ({ mangas, deleteManga, searchMangas }) => {
 
   return (
     <>
-    <Helmet>
-      <title>Available Mangas</title>
-    </Helmet>
-      <SearchBar setQuery={setQuery} searchMangas={searchMangas} />
+      <Helmet>
+        <title>Available Mangas</title>
+      </Helmet>
+      <SearchBar setQuery={setQuery} />
+      <AddButton createManga={createManga} />
       <ListWrapper>{mangaList}</ListWrapper>
     </>
   );

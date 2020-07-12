@@ -14,7 +14,7 @@ const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
   return (
     <NavStyled className="navbar navbar-expand">
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -22,7 +22,7 @@ const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
       <WelcomeImgWrapper to="/">
         <WelcomeImage
@@ -31,16 +31,16 @@ const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
         />
       </WelcomeImgWrapper>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item m-auto">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item m-auto">
             <NavItem className="nav-link" to="/mangas">
-              Mangas <span class="sr-only">(current)</span>
+              Mangas <span className="sr-only">(current)</span>
             </NavItem>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item m-auto mr-auto">
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item m-auto mr-auto">
             <ThemeButton className="nav-link" onClick={toggleTheme}>
               {currentTheme === "lightTheme" ? "Dark" : "Light"} Mode
             </ThemeButton>

@@ -48,6 +48,10 @@ function App() {
     setCurrentTheme(currentTheme === "lightTheme" ? "darkTheme" : "lightTheme");
   };
 
+  const createManga = (newManga) => {
+    setMangas([..._mangas, newManga])
+  }
+
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
@@ -63,7 +67,7 @@ function App() {
           <MangaDetail mangas={_mangas} deleteManga={deleteManga} />
         </Route>
         <Route exact path="/mangas">
-          <MangaList mangas={_mangas} deleteManga={deleteManga} />
+          <MangaList createManga={createManga} mangas={_mangas} deleteManga={deleteManga} />
         </Route>
         <Route exact path="/">
           <Home />
