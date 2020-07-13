@@ -1,15 +1,19 @@
 //React
 import React from "react";
+import { observer } from "mobx-react"
 
 //Styles
 import { DeleteButtonStyled } from "../../style";
 
-const DeleteButton = ({ deleteManga, mangaId }) => {
+//Stores 
+import mangaStore from "../../stores/mangaStore";
+
+const DeleteButton = ({ mangaId }) => {
   const handleDelete = () => {
-    deleteManga(mangaId);
+    mangaStore.deleteManga(mangaId);
   };
 
   return <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>;
 };
 
-export default DeleteButton;
+export default observer(DeleteButton);

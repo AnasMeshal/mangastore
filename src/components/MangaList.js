@@ -1,6 +1,10 @@
 //React
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import { observer } from "mobx-react"
+
+//Stores
+import mangaStore from "../stores/mangaStore"
 
 //Components
 import MangaItem from "./MangaItem";
@@ -10,17 +14,17 @@ import AddButton from "../components/buttons/AddButton ";
 //Styles
 import { ListWrapper } from "../style";
 
-const MangaList = ({ mangas, deleteManga, createManga}) => {
+const MangaList = () => {
   const [query, setQuery] = useState("");
 
-  const filteredManga = mangas.filter(
+  const filteredManga = mangaStore.mangas.filter(
     (manga) =>
       manga.name.toUpperCase().includes(query.toUpperCase()) ||
       manga.author.toUpperCase().includes(query.toUpperCase())
   );
 
   const mangaList = filteredManga.map((manga) => (
-    <MangaItem manga={manga} deleteManga={deleteManga} key={manga.id} />
+    <MangaItem manga={manga} key={manga.id} />
   ));
 
   return (
@@ -29,10 +33,10 @@ const MangaList = ({ mangas, deleteManga, createManga}) => {
         <title>Available Mangas</title>
       </Helmet>
       <SearchBar setQuery={setQuery} />
-      <AddButton createManga={createManga} />
+      <AddButton />
       <ListWrapper>{mangaList}</ListWrapper>
     </>
   );
 };
 
-export default MangaList;
+export default observer(MangaList);

@@ -4,6 +4,9 @@ import React, { useState } from "react";
 //Modal
 import Modal from "react-modal";
 
+//Stores
+import mangaStore from "../../stores/mangaStore"
+
 //Icon
 import { GrClose } from "react-icons/gr";
 
@@ -21,7 +24,7 @@ const customStyles = {
   },
 };
 
-const MangaModal = ({mangas, isOpen, closeModal, createManga }) => {
+const MangaModal = ({ isOpen, closeModal }) => {
   const [manga, setManga] = useState({
     name: "",
     price: 0,
@@ -36,7 +39,7 @@ const MangaModal = ({mangas, isOpen, closeModal, createManga }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createManga(manga);
+    mangaStore.createManga(manga);
     closeModal();
   };
 
@@ -61,6 +64,7 @@ const MangaModal = ({mangas, isOpen, closeModal, createManga }) => {
               <div className="form-group col-md-6">
                 <label htmlFor="inputEmail4">Manga Name</label>
                 <input
+                  required
                   onChange={handleChange}
                   type="text"
                   name="name"
@@ -71,6 +75,7 @@ const MangaModal = ({mangas, isOpen, closeModal, createManga }) => {
               <div className="form-group col-md-6">
                 <label htmlFor="inputPassword4">Manga Price</label>
                 <input
+                  required
                   onChange={handleChange}
                   type="number"
                   name="price"
@@ -83,6 +88,7 @@ const MangaModal = ({mangas, isOpen, closeModal, createManga }) => {
               <div className="form-group col-md-12">
                 <label htmlFor="inputPassword4">Manga Description</label>
                 <input
+                  required
                   onChange={handleChange}
                   type="text"
                   name="description"
@@ -93,6 +99,7 @@ const MangaModal = ({mangas, isOpen, closeModal, createManga }) => {
               <div className="form-group col-md-12">
                 <label htmlFor="inputPassword4">Manga Author</label>
                 <input
+                  required
                   onChange={handleChange}
                   type="text"
                   name="author"
@@ -103,6 +110,7 @@ const MangaModal = ({mangas, isOpen, closeModal, createManga }) => {
               <div className="form-group col-md-12">
                 <label htmlFor="inputPassword4">Cover Image</label>
                 <input
+                  required
                   onChange={handleChange}
                   type="text"
                   name="img"

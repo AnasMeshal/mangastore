@@ -1,8 +1,6 @@
 //React
 import React, { useState } from "react";
 import { Route, Switch } from "react-router";
-import lightLogo from "./welcome-light.png";
-import darkLogo from "./welcome-dark.png";
 
 //ThemeProvider
 import { ThemeProvider } from "styled-components";
@@ -16,6 +14,8 @@ import NavBar from "./components/NavBar";
 
 //Styles
 import { GlobalStyle } from "./style";
+import lightLogo from "./welcome-light.png";
+import darkLogo from "./welcome-dark.png";
 
 const theme = {
   lightTheme: {
@@ -37,20 +37,10 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("lightTheme");
-  const [_mangas, setMangas] = useState(mangas);
-
-  const deleteManga = (mangaId) => {
-    const updatedMangas = _mangas.filter((manga) => manga.id !== mangaId);
-    setMangas(updatedMangas);
-  };
 
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === "lightTheme" ? "darkTheme" : "lightTheme");
   };
-
-  const createManga = (newManga) => {
-    setMangas([..._mangas, newManga])
-  }
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>
@@ -64,10 +54,10 @@ function App() {
 
       <Switch>
         <Route exact path="/mangas/:mangaSlug">
-          <MangaDetail mangas={_mangas} deleteManga={deleteManga} />
+          <MangaDetail />
         </Route>
         <Route exact path="/mangas">
-          <MangaList createManga={createManga} mangas={_mangas} deleteManga={deleteManga} />
+          <MangaList />
         </Route>
         <Route exact path="/">
           <Home />
