@@ -8,7 +8,6 @@ import { ThemeProvider } from "styled-components";
 //Components
 import MangaList from "./components/MangaList";
 import MangaDetail from "./components/MangaDetail";
-import mangas from "./mangas";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 

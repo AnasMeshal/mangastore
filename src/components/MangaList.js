@@ -9,7 +9,6 @@ import mangaStore from "../stores/mangaStore"
 //Components
 import MangaItem from "./MangaItem";
 import SearchBar from "./SearchBar";
-import AddButton from "../components/buttons/AddButton ";
 
 //Styles
 import { ListWrapper } from "../style";
