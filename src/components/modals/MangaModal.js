@@ -25,7 +25,8 @@ const customStyles = {
 };
 
 const MangaModal = ({ isOpen, closeModal, oldManga }) => {
-  const [manga, setManga] = useState( oldManga ?? {
+  const [manga, setManga] = useState(
+    oldManga ?? {
       name: "",
       price: 0,
       description: "",
@@ -77,6 +78,7 @@ const MangaModal = ({ isOpen, closeModal, oldManga }) => {
               <div className="form-group col-md-6">
                 <label htmlFor="inputPassword4">Manga Price</label>
                 <input
+                  step="0.01"
                   value={manga.price}
                   required
                   onChange={handleChange}
