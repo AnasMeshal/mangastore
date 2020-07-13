@@ -1,14 +1,17 @@
 //React
 import React from "react";
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react"
 
 //Styles
 import { ShopImage, ItemWrapper } from "../style";
 
 //Components
 import DeleteButton from "./buttons/DeleteButton";
+import UpdateButton from "./buttons/UpdateButton ";
 
-const MangaItem = ({ manga, deleteManga }) => {
+
+const MangaItem = ({ manga }) => {
   return (
     <ItemWrapper>
       <Link to={`/mangas/${manga.slug}`}>
@@ -16,9 +19,10 @@ const MangaItem = ({ manga, deleteManga }) => {
       </Link>
       <p>{manga.name}</p>
       <p className="item-price">{manga.price}KD</p>
-      <DeleteButton mangaId={manga.id} deleteManga={deleteManga} />
+      <UpdateButton oldManga={manga} />
+      <DeleteButton mangaId={manga.id} />
     </ItemWrapper>
   );
 };
 
-export default MangaItem;
+export default observer(MangaItem);

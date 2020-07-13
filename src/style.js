@@ -28,7 +28,7 @@ export const TitleWrapper = styled.div`
   margin-right: auto;
   margin-top: 3em;
   font-family: Galada; cursive;
-  font-size: 25px;
+  font-size: 1.5em;
   text-align: center;
   height: 300px;
   display: flex;
@@ -39,7 +39,7 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.h1`
   margin-top: auto;
-  font-size: 65px;
+  font-size: 3em;
   :hover {
     cursor: default;
   }
@@ -49,7 +49,7 @@ export const Description = styled.h4`
   margin-bottom: auto;
   text-align: center;
   font-family: Fjalla One, sans-serif;
-  font-size: 25px;
+  font-size: 2em;
   :hover {
     cursor: default;
   }
@@ -71,7 +71,7 @@ export const ItemWrapper = styled.div`
     margin-top: 1em;
     font-weight: Bolder;
     text-align: center;
-    font-size: 20px;
+    font-size: 1.5em;
     :hover {
       cursor: default;
     }
@@ -81,7 +81,9 @@ export const ItemWrapper = styled.div`
     color: #27ae60;
     font-weight: bold;
     text-align: center;
-    font-size: 20px;
+    font-size: 1.5em;
+    margin-bottom: 1.5vh;
+    margin-top: 0vh;
   }
 `;
 
@@ -89,14 +91,14 @@ export const ShopImage = styled.img`
   height: 400px;
   width: 250px;
   border-bottom: ${({ theme }) => theme.borderColor} solid 3px;
-  border-radius: 10px;
+  border-radius: 1vw;
 `;
 
 export const ListWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: Wrap;
-  margin-bottom: 2em;
+  margin-bottom: 2vh;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -112,10 +114,10 @@ export const ThemeButton = styled.button`
   background: ${({ theme }) => theme.mainColor};
   color: ${({ theme }) => theme.textColor};
   border: ${({ theme }) => theme.borderColor} solid;
-  border-radius: 10px;
-  padding: 10px 20px;
-  margin=right: 20px;
-  margin-left: 20px;
+  border-radius: 1vw;
+  padding: 1vh 2vw;
+  margin=right: 2vw;
+  margin-left: 2vw;
   :hover {
     cursor: pointer;
     opacity: 0.4;
@@ -127,8 +129,8 @@ export const DeleteButtonStyled = styled.h5`
   color: #e74c3c;
   font-size: 20px;
   text-align: center;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  margin-top: .5vh;
+  margin-bottom: 5vh;
   :hover {
     cursor: pointer;
     color: #c0392b;
@@ -242,4 +244,16 @@ export const AddButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   padding: 1vh 3vw;
+`;
+
+export const UpdateButtonStyled = styled.h5`
+  color: #e74c3c;
+  font-size: 20px;
+  text-align: center;
+  margin-top: .5vh;
+  margin-bottom: 1vh;
+  :hover {
+    cursor: pointer;
+    color: #c0392b;
+  }
 `;

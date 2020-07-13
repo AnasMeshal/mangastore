@@ -3,6 +3,7 @@ import React from "react";
 
 //Styles
 import { Search, SearchWrapper } from "../style";
+import AddButton from "./buttons/AddButton ";
 
 const SearchBar = ({ setQuery }) => {
   return (
@@ -11,6 +12,7 @@ const SearchBar = ({ setQuery }) => {
         placeholder="Search for your manga or author"
         onChange={(event) => setQuery(event.target.value)}
       />
+      <AddButton />
     </SearchWrapper>
   );
 };

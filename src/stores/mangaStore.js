@@ -9,14 +9,19 @@ class MangaStore {
   mangas = mangas;
 
   createManga = (newManga) => {
-    newManga.id = this.mangas[this.mangas.length - 1].id + 1 ;
+    newManga.id = this.mangas[this.mangas.length - 1].id + 1;
     newManga.slug = slugify(newManga.name);
     this.mangas.push(newManga);
   };
 
+  updateManga = (updatedManga) => {
+    const manga = this.mangas.find((manga) => manga.id === updatedManga.id);
+    for (const key in manga) manga[key] = updatedManga[key];
+  };
+
   deleteManga = (mangaId) => {
     this.mangas = this.mangas.filter((manga) => manga.id !== mangaId);
-    console.log(mangaId)
+    console.log(mangaId);
   };
 }
 

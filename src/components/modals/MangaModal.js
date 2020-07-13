@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 
 //Stores
-import mangaStore from "../../stores/mangaStore"
+import mangaStore from "../../stores/mangaStore";
 
 //Icon
 import { GrClose } from "react-icons/gr";
@@ -24,14 +24,15 @@ const customStyles = {
   },
 };
 
-const MangaModal = ({ isOpen, closeModal }) => {
-  const [manga, setManga] = useState({
-    name: "",
-    price: 0,
-    description: "",
-    img: "",
-    author: "",
-  });
+const MangaModal = ({ isOpen, closeModal, oldManga }) => {
+  const [manga, setManga] = useState( oldManga ?? {
+      name: "",
+      price: 0,
+      description: "",
+      img: "",
+      author: "",
+    }
+  );
 
   const handleChange = (event) => {
     setManga({ ...manga, [event.target.name]: event.target.value });
@@ -39,7 +40,7 @@ const MangaModal = ({ isOpen, closeModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    mangaStore.createManga(manga);
+    mangaStore[oldManga ? "updateManga" : "createManga"](manga);
     closeModal();
   };
 
@@ -64,6 +65,7 @@ const MangaModal = ({ isOpen, closeModal }) => {
               <div className="form-group col-md-6">
                 <label htmlFor="inputEmail4">Manga Name</label>
                 <input
+                  value={manga.name}
                   required
                   onChange={handleChange}
                   type="text"
@@ -75,6 +77,7 @@ const MangaModal = ({ isOpen, closeModal }) => {
               <div className="form-group col-md-6">
                 <label htmlFor="inputPassword4">Manga Price</label>
                 <input
+                  value={manga.price}
                   required
                   onChange={handleChange}
                   type="number"
@@ -88,6 +91,7 @@ const MangaModal = ({ isOpen, closeModal }) => {
               <div className="form-group col-md-12">
                 <label htmlFor="inputPassword4">Manga Description</label>
                 <input
+                  value={manga.description}
                   required
                   onChange={handleChange}
                   type="text"
@@ -99,6 +103,7 @@ const MangaModal = ({ isOpen, closeModal }) => {
               <div className="form-group col-md-12">
                 <label htmlFor="inputPassword4">Manga Author</label>
                 <input
+                  value={manga.author}
                   required
                   onChange={handleChange}
                   type="text"
@@ -110,6 +115,7 @@ const MangaModal = ({ isOpen, closeModal }) => {
               <div className="form-group col-md-12">
                 <label htmlFor="inputPassword4">Cover Image</label>
                 <input
+                  value={manga.img}
                   required
                   onChange={handleChange}
                   type="text"
@@ -120,7 +126,7 @@ const MangaModal = ({ isOpen, closeModal }) => {
               </div>
             </div>
             <AddButtonStyled type="submit" className="btn btn-primary">
-              Create
+              {oldManga ? "Update" : "Create"}
             </AddButtonStyled>
           </form>
         </div>

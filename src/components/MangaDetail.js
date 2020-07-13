@@ -2,6 +2,7 @@
 import React from "react";
 import { useParams, useHistory, Redirect } from "react-router-dom";
 import {Helmet} from "react-helmet";
+import { observer } from "mobx-react"
 
 // Styles
 import {
@@ -11,6 +12,7 @@ import {
 
 //Components
 import DeleteButton from "./buttons/DeleteButton";
+import UpdateButton from "./buttons/UpdateButton ";
 
 //Stores
 import mangaStore from "../stores/mangaStore"
@@ -32,7 +34,7 @@ const MangaDetail = () => {
     <Helmet>
       <title>{manga.name} manga</title>
     </Helmet>
-    <MangaDetailWrapper onClick={goBack}>
+    <MangaDetailWrapper >
       <h1>{manga.name}</h1>
       <img src={manga.img} alt={manga.name} />
       <p>price: {manga.price} KD</p>
@@ -42,11 +44,12 @@ const MangaDetail = () => {
       <p className="description">
         Written By: {manga.author}
       </p>
+      <UpdateButton oldManga={manga} />
       <DeleteButton mangaId={manga.id}/>
-      <ChangeViewButton>Back</ChangeViewButton>
+      <ChangeViewButton onClick={goBack}>Back</ChangeViewButton>
     </MangaDetailWrapper>
     </>
   );
 };
 
-export default MangaDetail;
+export default observer(MangaDetail);

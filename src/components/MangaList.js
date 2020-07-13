@@ -33,7 +33,6 @@ const MangaList = () => {
         <title>Available Mangas</title>
       </Helmet>
       <SearchBar setQuery={setQuery} />
-      <AddButton />
       <ListWrapper>{mangaList}</ListWrapper>
     </>
   );
