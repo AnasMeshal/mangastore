@@ -3,7 +3,7 @@ import React from "react";
 import { observer } from "mobx-react"
 
 //Styles
-import { DeleteButtonStyled } from "../../style";
+import { DeleteButtonStyled } from "../../styles";
 
 //Icon
 import { BsTrash } from "react-icons/bs";
@@ -16,7 +16,7 @@ const DeleteButton = ({ mangaId }) => {
     mangaStore.deleteManga(mangaId);
   };
 
-  return <DeleteButtonStyled onClick={handleDelete}><BsTrash /> Delete</DeleteButtonStyled>;
+  return <DeleteButtonStyled onClick={handleDelete}>Delete <BsTrash /></DeleteButtonStyled>;
 };
 
 export default observer(DeleteButton);

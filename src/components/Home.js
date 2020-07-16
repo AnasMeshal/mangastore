@@ -3,7 +3,7 @@ import React from "react";
 import {Helmet} from "react-helmet";
 
 //Styles
-import { TitleWrapper, Title, Description } from "../style";
+import { TitleWrapper, Title, Description } from "../styles";
 
 const Home = () => {
   return (

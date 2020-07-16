@@ -8,7 +8,7 @@ import {
   NavStyled,
   WelcomeImgWrapper,
   WelcomeImage,
-} from "../style";
+} from "../styles";
 
 const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
   return (

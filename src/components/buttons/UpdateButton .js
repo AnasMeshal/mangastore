@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Styling
-import { UpdateButtonStyled } from "../../style";
+import { UpdateButtonStyled } from "../../styles";
 
 //Icon
 import { FiEdit2 } from "react-icons/fi";
@@ -17,7 +17,7 @@ const UpdateButton = ({ oldManga }) => {
   const openModal = () => setIsOpen(true);
   return (
     <>
-      <UpdateButtonStyled onClick={openModal}><FiEdit2/> Edit</UpdateButtonStyled>
+      <UpdateButtonStyled onClick={openModal}>Edit <FiEdit2/></UpdateButtonStyled>
       <MangaModal oldManga={oldManga} closeModal={closeModal} isOpen={isOpen} />
     </>
   );

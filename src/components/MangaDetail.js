@@ -8,7 +8,7 @@ import { observer } from "mobx-react"
 import {
   MangaDetailWrapper,
   ChangeViewButton,
-} from "../style";
+} from "../styles";
 
 //Components
 import DeleteButton from "./buttons/DeleteButton";

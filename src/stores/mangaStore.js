@@ -7,11 +7,13 @@ import mangas from "../mangas";
 
 class MangaStore {
   mangas = mangas;
+  idCounter = mangas.length + 1;
 
   createManga = (newManga) => {
-    newManga.id = this.mangas[this.mangas.length - 1].id + 1;
+    newManga.id = this.idCounter
     newManga.slug = slugify(newManga.name);
     this.mangas.push(newManga);
+    this.idCounter++
   };
 
   updateManga = (updatedManga) => {

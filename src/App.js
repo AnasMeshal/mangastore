@@ -12,7 +12,7 @@ import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 
 //Styles
-import { GlobalStyle } from "./style";
+import { GlobalStyle } from "./styles";
 import lightLogo from "./welcome-light.png";
 import darkLogo from "./welcome-dark.png";
 
@@ -35,10 +35,13 @@ const theme = {
 };
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState("lightTheme");
+  const savedTheme = localStorage.getItem("theme");
+  const [currentTheme, setCurrentTheme] = useState(savedTheme ?? "lightTheme");
 
   const toggleTheme = () => {
-    setCurrentTheme(currentTheme === "lightTheme" ? "darkTheme" : "lightTheme");
+    const newTheme = currentTheme === "lightTheme" ? "darkTheme" : "lightTheme";
+    setCurrentTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   return (

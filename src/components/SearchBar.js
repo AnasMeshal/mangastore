@@ -2,7 +2,7 @@
 import React from "react";
 
 //Styles
-import { Search, SearchWrapper } from "../style";
+import { Search, SearchWrapper } from "../styles";
 import AddButton from "./buttons/AddButton ";
 
 const SearchBar = ({ setQuery }) => {

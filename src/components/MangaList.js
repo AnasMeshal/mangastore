@@ -11,7 +11,7 @@ import MangaItem from "./MangaItem";
 import SearchBar from "./SearchBar";
 
 //Styles
-import { ListWrapper } from "../style";
+import { ListWrapper } from "../styles";
 
 const MangaList = () => {
   const [query, setQuery] = useState("");
