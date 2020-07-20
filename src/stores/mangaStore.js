@@ -1,19 +1,26 @@
 //React
 import { decorate, observable } from "mobx";
 import slugify from "react-slugify";
-
-//Data
-import mangas from "../mangas";
+import axios from "axios";
 
 class MangaStore {
-  mangas = mangas;
-  idCounter = mangas.length + 1;
+  mangas = [];
+  idCounter = this.mangas.length + 1;
+
+  fetchMangas = async () => {
+    try {
+      const res = await axios.get("http://localhost:8000/mangas");
+      this.mangas = res.data;
+    } catch (error) {
+      console.error("error 404");
+    }
+  };
 
   createManga = (newManga) => {
-    newManga.id = this.idCounter
+    newManga.id = this.idCounter;
     newManga.slug = slugify(newManga.name);
     this.mangas.push(newManga);
-    this.idCounter++
+    this.idCounter++;
   };
 
   updateManga = (updatedManga) => {
@@ -32,4 +39,5 @@ decorate(MangaStore, {
 });
 
 const mangaStore = new MangaStore();
+mangaStore.fetchMangas();
 export default mangaStore;

@@ -1,17 +1,17 @@
 //React
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
-import { observer } from "mobx-react"
+import { observer } from "mobx-react";
 
 //Stores
-import mangaStore from "../stores/mangaStore"
+import mangaStore from "../../stores/mangaStore";
 
 //Components
-import MangaItem from "./MangaItem";
-import SearchBar from "./SearchBar";
+import MangaItem from "../MangaItem";
+import SearchBar from "../SearchBar";
 
 //Styles
-import { ListWrapper } from "../styles";
+import { ListWrapper } from "./styles";
 
 const MangaList = () => {
   const [query, setQuery] = useState("");

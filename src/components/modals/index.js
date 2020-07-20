@@ -11,7 +11,7 @@ import mangaStore from "../../stores/mangaStore";
 import { GrClose } from "react-icons/gr";
 
 //Styles
-import { AddButtonStyled } from "../../styles";
+import { AddButtonStyled } from "./styles";
 
 const customStyles = {
   content: {

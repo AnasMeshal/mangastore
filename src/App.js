@@ -10,6 +10,7 @@ import MangaList from "./components/MangaList";
 import MangaDetail from "./components/MangaDetail";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
+import NotFound from "./components/NotFound";
 
 //Styles
 import { GlobalStyle } from "./styles";
@@ -60,6 +61,9 @@ function App() {
         </Route>
         <Route exact path="/mangas">
           <MangaList />
+        </Route>
+        <Route exact path="/notfound">
+          <NotFound />
         </Route>
         <Route exact path="/">
           <Home />

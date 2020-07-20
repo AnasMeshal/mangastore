@@ -1,15 +1,14 @@
 //React
 import React from "react";
 import { Link } from "react-router-dom";
-import { observer } from "mobx-react"
+import { observer } from "mobx-react";
 
 //Styles
-import { ShopImage, ItemWrapper } from "../styles";
+import { ShopImage, ItemWrapper } from "./styles";
 
 //Components
-import DeleteButton from "./buttons/DeleteButton";
-import UpdateButton from "./buttons/UpdateButton ";
-
+import DeleteButton from "../buttons/DeleteButton";
+import UpdateButton from "../buttons/UpdateButton ";
 
 const MangaItem = ({ manga }) => {
   return (

@@ -1,13 +1,13 @@
 //React
 import React from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 //Styles
-import { TitleWrapper, Title, Description } from "../styles";
+import { TitleWrapper, Title, Description } from "./styles";
 
 const Home = () => {
   return (
-    <>  
+    <>
       <Helmet>
         <title>Welcome to Manga Store</title>
       </Helmet>
