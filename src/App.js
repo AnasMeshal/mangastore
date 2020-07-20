@@ -19,7 +19,7 @@ import darkLogo from "./welcome-dark.png";
 
 const theme = {
   lightTheme: {
-    backgroundImage: "/assets/white.jpg",
+    backgroundImage: "/assets/light.jpg",
     textColor: "black",
     borderColor: "black",
     mainColor: "#EAF0F1",
@@ -62,11 +62,11 @@ function App() {
         <Route exact path="/mangas">
           <MangaList />
         </Route>
-        <Route exact path="/notfound">
-          <NotFound />
-        </Route>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route component={NotFound}>
+          <NotFound />
         </Route>
       </Switch>
     </ThemeProvider>

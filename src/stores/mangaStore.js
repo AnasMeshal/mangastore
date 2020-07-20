@@ -28,9 +28,13 @@ class MangaStore {
     for (const key in manga) manga[key] = updatedManga[key];
   };
 
-  deleteManga = (mangaId) => {
-    this.mangas = this.mangas.filter((manga) => manga.id !== mangaId);
-    console.log(mangaId);
+  deleteManga = async (mangaId) => {
+    try {
+      await axios.delete(`http://localhost:8000/mangas/${mangaId}`);
+      this.mangas = this.mangas.filter((_manga) => _manga.id !== mangaId);
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
