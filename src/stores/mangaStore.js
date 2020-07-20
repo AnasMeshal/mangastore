@@ -5,7 +5,6 @@ import axios from "axios";
 
 class MangaStore {
   mangas = [];
-  idCounter = this.mangas.length + 1;
 
   fetchMangas = async () => {
     try {
@@ -16,11 +15,13 @@ class MangaStore {
     }
   };
 
-  createManga = (newManga) => {
-    newManga.id = this.idCounter;
-    newManga.slug = slugify(newManga.name);
-    this.mangas.push(newManga);
-    this.idCounter++;
+  createManga = async (newManga) => {
+    try {
+      const res = await axios.post("http://localhost:8000/mangas", newManga);
+      this.mangas.push(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   updateManga = (updatedManga) => {
