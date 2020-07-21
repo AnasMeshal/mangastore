@@ -1,6 +1,5 @@
 //React
 import { decorate, observable } from "mobx";
-import slugify from "react-slugify";
 import axios from "axios";
 
 class MangaStore {
@@ -24,9 +23,17 @@ class MangaStore {
     }
   };
 
-  updateManga = (updatedManga) => {
-    const manga = this.mangas.find((manga) => manga.id === updatedManga.id);
-    for (const key in manga) manga[key] = updatedManga[key];
+  updateManga = async (updatedManga) => {
+    try {
+      await axios.put(
+        `http://localhost:8000/mangas/${updatedManga.id}`,
+        updatedManga
+      );
+      const manga = this.mangas.find((manga) => manga.id === updatedManga.id);
+      for (const key in manga) manga[key] = updatedManga[key];
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   deleteManga = async (mangaId) => {
