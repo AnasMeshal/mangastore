@@ -1,11 +1,15 @@
 //React
 import React from "react";
 
+//Styles
+import { Title, TitleWrapper } from "./styles";
+
 const NotFound = () => {
   return (
-    <div>
-      <h1>this page doesn't exist</h1>
-    </div>
+    <TitleWrapper>
+      <Title>404</Title>
+      <Title>this page doesn't exist</Title>
+    </TitleWrapper>
   );
 };
 
