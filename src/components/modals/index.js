@@ -31,13 +31,17 @@ const MangaModal = ({ isOpen, closeModal, oldManga }) => {
       name: "",
       price: 0,
       description: "",
-      img: "",
+      image: "",
       author: "",
     }
   );
 
   const handleChange = (event) => {
     setManga({ ...manga, [event.target.name]: event.target.value });
+  };
+
+  const handleImage = (event) => {
+    setManga({ ...manga, image: event.target.files[0] });
   };
 
   const handleSubmit = (event) => {
@@ -85,8 +89,8 @@ const MangaModal = ({ isOpen, closeModal, oldManga }) => {
                   onChange={handleChange}
                   type="number"
                   name="price"
-                  min="2"
-                  max="5"
+                  min="0"
+                  max="10"
                   className="form-control"
                   placeholder="Price"
                 />
@@ -100,7 +104,7 @@ const MangaModal = ({ isOpen, closeModal, oldManga }) => {
                   type="text"
                   name="description"
                   className="form-control"
-                  placeholder="Manga name is an ..."
+                  placeholder=" is an ..."
                 />
               </div>
               <div className="form-group col-md-12">
@@ -118,11 +122,10 @@ const MangaModal = ({ isOpen, closeModal, oldManga }) => {
               <div className="form-group col-md-12">
                 <label htmlFor="inputPassword4">Cover Image</label>
                 <input
-                  value={manga.img}
                   required
-                  onChange={handleChange}
-                  type="text"
-                  name="img"
+                  onChange={handleImage}
+                  type="file"
+                  name="image"
                   className="form-control"
                   placeholder="https://example.com"
                 />

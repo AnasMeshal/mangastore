@@ -16,7 +16,9 @@ class MangaStore {
 
   createManga = async (newManga) => {
     try {
-      const res = await axios.post("http://localhost:8000/mangas", newManga);
+      const formData = new FormData();
+      for (const key in newManga) formData.append(key, newManga[key]);
+      const res = await axios.post("http://localhost:8000/mangas", formData);
       this.mangas.push(res.data);
     } catch (error) {
       console.log(error);

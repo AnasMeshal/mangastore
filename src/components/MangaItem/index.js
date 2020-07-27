@@ -14,7 +14,7 @@ const MangaItem = ({ manga }) => {
   return (
     <ItemWrapper>
       <Link to={`/mangas/${manga.slug}`}>
-        <ShopImage src={manga.img} alt={manga.name} />
+        <ShopImage src={manga.image} alt={manga.name} />
       </Link>
       <p>{manga.name}</p>
       <p className="item-price">{manga.price}KD</p>

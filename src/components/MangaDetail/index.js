@@ -33,7 +33,7 @@ const MangaDetail = () => {
       </Helmet>
       <MangaDetailWrapper>
         <h1>{manga.name}</h1>
-        <img src={manga.img} alt={manga.name} />
+        <img src={manga.image} alt={manga.name} />
         <p>price: {manga.price} KD</p>
         <p className="description">
           {manga.name} {manga.description}
