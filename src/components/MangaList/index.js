@@ -3,9 +3,6 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { observer } from "mobx-react";
 
-//Stores
-import mangaStore from "../../stores/mangaStore";
-
 //Components
 import MangaItem from "../MangaItem";
 import SearchBar from "../SearchBar";
@@ -13,10 +10,10 @@ import SearchBar from "../SearchBar";
 //Styles
 import { ListWrapper } from "./styles";
 
-const MangaList = () => {
+const MangaList = ({ mangas }) => {
   const [query, setQuery] = useState("");
 
-  const filteredManga = mangaStore.mangas.filter(
+  const filteredManga = mangas.filter(
     (manga) =>
       manga.name.toUpperCase().includes(query.toUpperCase()) ||
       manga.author.toUpperCase().includes(query.toUpperCase())

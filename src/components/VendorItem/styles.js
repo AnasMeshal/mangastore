@@ -28,14 +28,20 @@ export const ItemWrapper = styled.div`
     font-weight: bold;
     text-align: center;
     font-size: 1.5em;
-    margin-bottom: 0.5vh;
+    margin-bottom: 1.5vh;
     margin-top: 0vh;
   }
 `;
 
 export const ShopImage = styled.img`
-  height: 210px;
-  width: 210px;
+  height: 200px;
+  width: 200px;
   border-bottom: ${({ theme }) => theme.borderColor} solid 3px;
   border-radius: 1vw;
+`;
+
+export const ItemWrapperWrapper = styled.div`
+  display: flex
+  flex-direction: coulmn;
+  justify-content: center;
 `;

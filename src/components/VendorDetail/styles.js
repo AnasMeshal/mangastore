@@ -13,16 +13,16 @@ export const ChangeViewButton = styled.h5`
   }
 `;
 
-export const MangaDetailWrapper = styled.div`
+export const VendorDetailWrapper = styled.div`
   display: block;
-  background-color: ${({ theme }) => theme.mainColor};
+  background-color: ${({ theme }) => theme.vendorBg};
   text-align: center;
   margin-right: auto;
   margin-left: auto;
   margin-top: 2em;
   border: ${({ theme }) => theme.borderColor} solid;
   width: 60%;
-  border-radius: 30px;
+  border-radius: 15px;
   margin-bottom: 2em;
 
   h1 {
@@ -32,20 +32,10 @@ export const MangaDetailWrapper = styled.div`
     margin-bottom: 0.3em;
   }
 
-  p {
-    margin-top: 0.2em;
-    font-size: 25px;
-    font-weight: bold;
-
-    &.description {
-      font-weight: 400;
-    }
-  }
-
-  img {
+  .VendorImage {
     border-radius: 10px;
     border-bottom: ${({ theme }) => theme.borderColor} solid;
-    height: 300px;
-    width: 300px;
+    height: 190px;
+    width: 190px;
   }
 `;

@@ -4,11 +4,13 @@ import axios from "axios";
 
 class MangaStore {
   mangas = [];
+  loading = true;
 
   fetchMangas = async () => {
     try {
       const res = await axios.get("http://localhost:8000/mangas");
       this.mangas = res.data;
+      this.loading = false;
     } catch (error) {
       console.error("error 404");
     }
@@ -18,7 +20,10 @@ class MangaStore {
     try {
       const formData = new FormData();
       for (const key in newManga) formData.append(key, newManga[key]);
-      const res = await axios.post("http://localhost:8000/mangas", formData);
+      const res = await axios.post(
+        `http://localhost:8000/vendors/${newManga.vendorId}/mangas`,
+        formData
+      );
       this.mangas.push(res.data);
     } catch (error) {
       console.log(error);
@@ -50,6 +55,7 @@ class MangaStore {
 
 decorate(MangaStore, {
   mangas: observable,
+  loading: observable,
 });
 
 const mangaStore = new MangaStore();

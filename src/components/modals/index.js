@@ -25,9 +25,10 @@ const customStyles = {
   },
 };
 
-const MangaModal = ({ isOpen, closeModal, oldManga }) => {
+const MangaModal = ({ isOpen, closeModal, oldManga, vendorId }) => {
   const [manga, setManga] = useState(
     oldManga ?? {
+      vendorId,
       name: "",
       price: 0,
       description: "",
@@ -122,7 +123,6 @@ const MangaModal = ({ isOpen, closeModal, oldManga }) => {
               <div className="form-group col-md-12">
                 <label htmlFor="inputPassword4">Cover Image</label>
                 <input
-                  required
                   onChange={handleImage}
                   type="file"
                   name="image"

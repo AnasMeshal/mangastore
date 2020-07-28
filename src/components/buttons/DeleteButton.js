@@ -11,12 +11,18 @@ import { BsTrash } from "react-icons/bs";
 
 //Stores
 import mangaStore from "../../stores/mangaStore";
+import vendorStore from "../../stores/vendorStore";
 
-const DeleteButton = ({ mangaId, redirect }) => {
+const DeleteButton = ({ mangaId, redirect, vendorId }) => {
   const history = useHistory();
 
   const handleDelete = () => {
-    mangaStore.deleteManga(mangaId);
+    if (vendorId) {
+      vendorStore.deleteVendor(vendorId);
+      history.push("/vendors");
+    } else {
+      mangaStore.deleteManga(mangaId);
+    }
 
     if (redirect) history.push("/mangas");
   };

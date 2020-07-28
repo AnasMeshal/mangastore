@@ -1,16 +1,18 @@
 //React
 import React, { useState } from "react";
-import { Route, Switch } from "react-router";
+import { observer } from "mobx-react";
 
 //ThemeProvider
 import { ThemeProvider } from "styled-components";
 
 //Components
-import MangaList from "./components/MangaList";
-import MangaDetail from "./components/MangaDetail";
-import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-import NotFound from "./components/NotFound";
+import Routes from "./components/Routes";
+import Loading from "./components/Loading";
+
+//Stores
+import mangaStore from "./stores/mangaStore";
+import vendorStore from "./stores/vendorStore";
 
 //Styles
 import { GlobalStyle } from "./styles";
@@ -25,6 +27,7 @@ const theme = {
     mainColor: "#EAF0F1",
     title: "#fff",
     navColor: "#fff",
+    vendorBg: "#f2f2f2",
   },
   darkTheme: {
     backgroundImage: "/assets/dark.jpg",
@@ -32,6 +35,7 @@ const theme = {
     borderColor: "white",
     mainColor: "#353b48",
     navColor: "black",
+    vendorBg: "#2d3436",
   },
 };
 
@@ -48,6 +52,7 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
+
       <NavBar
         toggleTheme={toggleTheme}
         currentTheme={currentTheme}
@@ -55,22 +60,9 @@ function App() {
         darkLogo={darkLogo}
       />
 
-      <Switch>
-        <Route exact path="/mangas/:mangaSlug">
-          <MangaDetail />
-        </Route>
-        <Route exact path="/mangas">
-          <MangaList />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route component={NotFound}>
-          <NotFound />
-        </Route>
-      </Switch>
+      {mangaStore.loading || vendorStore.loading ? <Loading /> : <Routes />}
     </ThemeProvider>
   );
 }
 
-export default App;
+export default observer(App);

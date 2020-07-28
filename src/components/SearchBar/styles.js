@@ -10,7 +10,7 @@ export const SearchWrapper = styled.div`
 export const Search = styled.input`
   margin-top: 2em;
   margin-bottom: 2em;
-  width: 30%;
+  width: 400px;
   font-size: 18px;
   padding: 11px;
   border: ${({ theme }) => theme.borderColor} 3px solid;

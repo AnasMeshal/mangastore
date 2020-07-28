@@ -4,10 +4,11 @@ import React, { useState } from "react";
 //Icon
 import { BsPlusCircle } from "react-icons/bs";
 
-//Components
+//Modal
 import MangaModal from "../modals";
+import VenderModal from "../modals/VendorModal";
 
-const AddButton = ({ createManga }) => {
+const AddButton = ({ createManga, vendorId }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -19,11 +20,20 @@ const AddButton = ({ createManga }) => {
         size="3em"
         style={{ marginTop: "auto", marginBottom: "auto", marginLeft: "2vw" }}
       />
-      <MangaModal
-        createManga={createManga}
-        isOpen={isOpen}
-        closeModal={closeModal}
-      />
+      {vendorId ? (
+        <MangaModal
+          vendorId={vendorId}
+          createManga={createManga}
+          isOpen={isOpen}
+          closeModal={closeModal}
+        />
+      ) : (
+        <VenderModal
+          createManga={createManga}
+          isOpen={isOpen}
+          closeModal={closeModal}
+        />
+      )}
     </>
   );
 };

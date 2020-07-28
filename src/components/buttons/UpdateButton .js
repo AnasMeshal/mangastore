@@ -8,8 +8,9 @@ import { FiEdit2 } from "react-icons/fi";
 
 // Components
 import MangaModal from "../modals";
+import VendorModal from "../modals/VendorModal";
 
-const UpdateButton = ({ oldManga }) => {
+const UpdateButton = ({ oldManga, vendor }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -20,7 +21,19 @@ const UpdateButton = ({ oldManga }) => {
       <UpdateButtonStyled onClick={openModal}>
         Edit <FiEdit2 />
       </UpdateButtonStyled>
-      <MangaModal oldManga={oldManga} closeModal={closeModal} isOpen={isOpen} />
+      {vendor ? (
+        <VendorModal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          oldVendor={vendor}
+        />
+      ) : (
+        <MangaModal
+          oldManga={oldManga}
+          closeModal={closeModal}
+          isOpen={isOpen}
+        />
+      )}
     </>
   );
 };

@@ -34,6 +34,11 @@ const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item m-auto">
+            <NavItem className="nav-link" to="/vendors">
+              Vendors <span className="sr-only">(current)</span>
+            </NavItem>
+          </li>
+          <li className="nav-item m-auto">
             <NavItem className="nav-link" to="/mangas">
               Mangas <span className="sr-only">(current)</span>
             </NavItem>
