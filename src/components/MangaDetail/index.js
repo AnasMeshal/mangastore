@@ -19,7 +19,7 @@ const MangaDetail = () => {
   const history = useHistory();
 
   const goBack = () => {
-    history.push("/mangas");
+    history.goBack();
   };
 
   const manga = mangaStore.mangas.find((manga) => manga.slug === mangaSlug);

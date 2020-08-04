@@ -30,7 +30,7 @@ const Routes = () => {
       <Route exact path="/mangas">
         <MangaList mangas={mangaStore.mangas} />
       </Route>
-      <Route component={NotFound}>
+      <Route>
         <NotFound />
       </Route>
     </Switch>

@@ -9,7 +9,7 @@ const Loading = () => {
     <LoadingWrapper>
       <ReactBootStrap.Spinner
         className="spinner"
-        animation="grow"
+        animation="border"
         size="xl"
         as="div"
       />

@@ -12,24 +12,9 @@ export const ItemWrapper = styled.div`
   border-radius: 10px;
   background: ${({ theme }) => theme.mainColor};
 
-  p {
+  h1 {
     color: ${({ theme }) => theme.textColor};
-    margin-top: 1em;
-    font-weight: Bolder;
-    text-align: center;
     font-size: 1.5em;
-    :hover {
-      cursor: default;
-    }
-  }
-
-  .item-price {
-    color: #27ae60;
-    font-weight: bold;
-    text-align: center;
-    font-size: 1.5em;
-    margin-bottom: 1.5vh;
-    margin-top: 0vh;
   }
 `;
 
