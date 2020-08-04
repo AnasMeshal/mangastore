@@ -13,6 +13,7 @@ import AddButton from "../buttons/AddButton ";
 
 //Stores
 import vendorStore from "../../stores/vendorStore";
+import mangaStore from "../../stores/mangaStore";
 
 const VendorDetail = () => {
   const { vendorSlug } = useParams();
@@ -26,6 +27,13 @@ const VendorDetail = () => {
     (vendor) => vendor.slug === vendorSlug
   );
 
+  let mangas = [];
+  if (vendor.mangas) {
+    vendor.mangas
+      .map((manga) => mangaStore.getItemById(manga.id))
+      .filter((manga) => manga);
+  }
+
   if (!vendor) return <Redirect to="/notfound" />;
 
   return (
@@ -36,8 +44,8 @@ const VendorDetail = () => {
       <VendorDetailWrapper>
         <h1>{vendor.name}</h1>
         <img className="VendorImage" src={vendor.image} alt={vendor.name} />
-        <AddButton vendorId={vendor.id} />
-        <MangaList mangas={vendor.mangas} />
+        <AddButton vendor={vendor} />
+        <MangaList mangas={mangas} />
         <ChangeViewButton onClick={goBack}>back</ChangeViewButton>
       </VendorDetailWrapper>
     </>

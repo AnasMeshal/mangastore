@@ -60,7 +60,6 @@ function App() {
         darkLogo={darkLogo}
       />
 
-      {/* <Loading /> */}
       {mangaStore.loading || vendorStore.loading ? <Loading /> : <Routes />}
     </ThemeProvider>
   );

@@ -25,10 +25,9 @@ const customStyles = {
   },
 };
 
-const MangaModal = ({ isOpen, closeModal, oldManga, vendorId }) => {
+const MangaModal = ({ isOpen, closeModal, oldManga, vendor }) => {
   const [manga, setManga] = useState(
     oldManga ?? {
-      vendorId,
       name: "",
       price: 0,
       description: "",
@@ -47,7 +46,7 @@ const MangaModal = ({ isOpen, closeModal, oldManga, vendorId }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    mangaStore[oldManga ? "updateManga" : "createManga"](manga);
+    mangaStore[oldManga ? "updateManga" : "createManga"](manga, vendor);
     closeModal();
   };
 

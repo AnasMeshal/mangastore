@@ -37,6 +37,7 @@ class VendorStore {
         (vendor) => vendor.id === updatedVendor.id
       );
       for (const key in vendor) vendor[key] = updatedVendor[key];
+      vendor.image = URL.createObjectURL(updatedVendor.image);
     } catch (error) {
       console.log(error);
     }

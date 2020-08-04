@@ -16,15 +16,20 @@ class MangaStore {
     }
   };
 
-  createManga = async (newManga) => {
+  getItemById = (mangaId) => {
+    return this.mangas.find((manga) => manga.id === mangaId);
+  };
+
+  createManga = async (newManga, vendor) => {
     try {
       const formData = new FormData();
       for (const key in newManga) formData.append(key, newManga[key]);
       const res = await axios.post(
-        `http://localhost:8000/vendors/${newManga.vendorId}/mangas`,
+        `http://localhost:8000/vendors/${vendor.id}/mangas`,
         formData
       );
       this.mangas.push(res.data);
+      vendor.mangas.push({ id: res.data.id });
     } catch (error) {
       console.log(error);
     }
@@ -32,12 +37,15 @@ class MangaStore {
 
   updateManga = async (updatedManga) => {
     try {
+      const formData = new FormData();
+      for (const key in updatedManga) formData.append(key, updatedManga[key]);
       await axios.put(
         `http://localhost:8000/mangas/${updatedManga.id}`,
-        updatedManga
+        formData
       );
       const manga = this.mangas.find((manga) => manga.id === updatedManga.id);
-      for (const key in manga) manga[key] = updatedManga[key];
+      for (const key in updatedManga) manga[key] = updatedManga[key];
+      manga.image = URL.createObjectURL(updatedManga.image);
     } catch (error) {
       console.log(error);
     }

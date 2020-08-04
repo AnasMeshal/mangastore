@@ -8,7 +8,7 @@ import { BsPlusCircle } from "react-icons/bs";
 import MangaModal from "../modals";
 import VenderModal from "../modals/VendorModal";
 
-const AddButton = ({ createManga, vendorId }) => {
+const AddButton = ({ createManga, vendor }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -20,9 +20,9 @@ const AddButton = ({ createManga, vendorId }) => {
         size="3em"
         style={{ marginTop: "auto", marginBottom: "auto", marginLeft: "2vw" }}
       />
-      {vendorId ? (
+      {vendor ? (
         <MangaModal
-          vendorId={vendorId}
+          vendor={vendor}
           createManga={createManga}
           isOpen={isOpen}
           closeModal={closeModal}

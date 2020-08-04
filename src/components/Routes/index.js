@@ -11,6 +11,7 @@ import VendorDetail from "../VendorDetail";
 
 //Stores
 import mangaStore from "../../stores/mangaStore";
+import { observer } from "mobx-react";
 
 const Routes = () => {
   return (
@@ -37,4 +38,4 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+export default observer(Routes);
