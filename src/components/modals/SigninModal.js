@@ -6,9 +6,11 @@ import Modal from "react-modal";
 //Styles
 import { AddButtonStyled } from "./styles";
 
+//Stores
+import authStore from "../../stores/authStore";
+
 //Icon
 import { GrClose } from "react-icons/gr";
-import authStore from "../../stores/authStore";
 
 const customStyles = {
   content: {
@@ -34,7 +36,7 @@ const SigninModal = ({ isOpen, closeModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // authStore.signup(user);
+    authStore.signin(user);
     closeModal();
   };
 

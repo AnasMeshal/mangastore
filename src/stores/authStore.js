@@ -10,6 +10,15 @@ class AuthStore {
       console.log(error);
     }
   };
+
+  signin = async (userData) => {
+    try {
+      const res = await instance.post("/signin", userData);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 decorate(AuthStore, {});
