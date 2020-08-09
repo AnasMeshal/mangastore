@@ -111,7 +111,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
                   value={user.password}
                   onChange={handleChange}
                   required
-                  type="text"
+                  type="password"
                   name="password"
                   className="form-control"
                   placeholder="password"

@@ -10,12 +10,13 @@ const SignupButton = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
-  const openModal = () => setIsOpen(true);
 
   return (
     <>
-      <SignupButtonStyled onClick={() => openModal}>Sign Up</SignupButtonStyled>
-      <SignupModal isOpen={isOpen} closeModal={closeModal} />;
+      <SignupButtonStyled onClick={() => setIsOpen(true)}>
+        Sign Up
+      </SignupButtonStyled>
+      <SignupModal isOpen={isOpen} closeModal={closeModal} />
     </>
   );
 };

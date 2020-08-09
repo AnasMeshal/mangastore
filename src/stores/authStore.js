@@ -1,5 +1,5 @@
 //React
-import { decorate, observable } from "mobx";
+import { decorate } from "mobx";
 import instance from "./instance";
 
 class AuthStore {
