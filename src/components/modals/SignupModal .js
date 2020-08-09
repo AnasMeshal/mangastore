@@ -97,6 +97,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
                 <label htmlFor="inputPassword4">Email</label>
                 <input
                   value={user.email}
+                  autocomplete="off"
                   onChange={handleChange}
                   required
                   type="text"
