@@ -3,6 +3,7 @@ import React from "react";
 
 //Components
 import SignupButton from "../buttons/SignupButton ";
+import SigninButton from "../buttons/SigninButton";
 
 //Styles
 import {
@@ -48,6 +49,9 @@ const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
           </li>
         </ul>
         <ul className="navbar-nav ml-auto">
+          <li className="nav-item m-auto mr-auto">
+            <SigninButton />
+          </li>
           <li className="nav-item m-auto mr-auto">
             <SignupButton />
           </li>

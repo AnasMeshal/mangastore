@@ -40,3 +40,19 @@ export const SignupButtonStyled = styled.button`
     transition: ease-out 300ms;
   }
 `;
+
+export const SigninButtonStyled = styled.button`
+  font-size: 20px;
+  background: ${({ theme }) => theme.mainColor};
+  color: ${({ theme }) => theme.textColor};
+  border: ${({ theme }) => theme.borderColor} solid;
+  border-radius: 1vw;
+  padding: 1vh 2vw;
+  margin=right: 2vw;
+  margin-left: 2vw;
+  :hover {
+    cursor: pointer;
+    opacity: 0.4;
+    transition: ease-out 300ms;
+  }
+`;
