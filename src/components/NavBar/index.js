@@ -1,6 +1,9 @@
 //React
 import React from "react";
 
+//Components
+import SignupButton from "../buttons/SignupButton ";
+
 //Styles
 import {
   ThemeButton,
@@ -45,6 +48,9 @@ const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
           </li>
         </ul>
         <ul className="navbar-nav ml-auto">
+          <li className="nav-item m-auto mr-auto">
+            <SignupButton />
+          </li>
           <li className="nav-item m-auto mr-auto">
             <ThemeButton className="nav-link" onClick={toggleTheme}>
               {currentTheme === "lightTheme" ? "Dark" : "Light"} Mode
