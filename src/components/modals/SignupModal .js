@@ -8,6 +8,7 @@ import { AddButtonStyled } from "./styles";
 
 //Icon
 import { GrClose } from "react-icons/gr";
+import authStore from "../../stores/authStore";
 
 const customStyles = {
   content: {
@@ -34,6 +35,12 @@ const SignupModal = ({ isOpen, closeModal }) => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    authStore.signup(user);
+    closeModal();
+  };
+
   return (
     <div style={{ backgroundColor: "black" }}>
       <Modal
@@ -50,7 +57,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
           >
             close
           </GrClose>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group col-md-6">
                 <label htmlFor="inputEmail4">First Name</label>
