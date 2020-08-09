@@ -12,9 +12,12 @@ const SignupButton = () => {
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
 
-  return <SignupButtonStyled onClick={openModal}>Sign Up</SignupButtonStyled>;
-
-  <SignupModal isOpen={isOpen} closeModal={closeModal} />;
+  return (
+    <>
+      <SignupButtonStyled onClick={() => openModal}>Sign Up</SignupButtonStyled>
+      <SignupModal isOpen={isOpen} closeModal={closeModal} />;
+    </>
+  );
 };
 
 export default SignupButton;
