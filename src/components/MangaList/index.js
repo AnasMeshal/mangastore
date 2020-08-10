@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { observer } from "mobx-react";
+import { Redirect } from "react-router";
 
 //Components
 import MangaItem from "../MangaItem";
@@ -9,6 +10,9 @@ import SearchBar from "../SearchBar";
 
 //Styles
 import { ListWrapper } from "./styles";
+
+//Stores
+import authStore from "../../stores/authStore";
 
 const MangaList = ({ mangas }) => {
   const [query, setQuery] = useState("");
@@ -22,6 +26,9 @@ const MangaList = ({ mangas }) => {
   const mangaList = filteredManga.map((manga) => (
     <MangaItem manga={manga} key={manga.id} />
   ));
+
+  if (!authStore.user || authStore.user.role !== "admin")
+    return <Redirect to="/" />;
 
   return (
     <>

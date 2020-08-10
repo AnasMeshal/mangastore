@@ -2,9 +2,11 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { observer } from "mobx-react";
+import { Redirect } from "react-router";
 
 //Stores
 import vendorStore from "../../stores/vendorStore";
+import authStore from "../../stores/authStore";
 
 //Components
 import VendorItem from "../VendorItem";
@@ -24,6 +26,9 @@ const VendorList = () => {
   const vendorList = filteredVendor.map((vendor) => (
     <VendorItem vendor={vendor} key={vendor.id} />
   ));
+
+  if (!authStore.user || authStore.user.role !== "admin")
+    return <Redirect to="/" />;
 
   return (
     <>

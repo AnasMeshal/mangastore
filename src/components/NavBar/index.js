@@ -1,9 +1,14 @@
 //React
 import React from "react";
+import { observer } from "mobx-react";
 
 //Components
 import SignupButton from "../buttons/SignupButton ";
 import SigninButton from "../buttons/SigninButton";
+import UserProfile from "../UserProfile";
+
+//Stores
+import authStore from "../../stores/authStore";
 
 //Styles
 import {
@@ -14,7 +19,14 @@ import {
   WelcomeImage,
 } from "./styles";
 
-const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
+const NavBar = ({
+  currentTheme,
+  lightLogo,
+  darkLogo,
+  toggleTheme,
+  userLight,
+  userDark,
+}) => {
   return (
     <NavStyled className="navbar navbar-expand">
       <button
@@ -36,25 +48,34 @@ const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
       </WelcomeImgWrapper>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item m-auto">
-            <NavItem className="nav-link" to="/vendors">
-              Vendors <span className="sr-only">(current)</span>
-            </NavItem>
-          </li>
-          <li className="nav-item m-auto">
-            <NavItem className="nav-link" to="/mangas">
-              Mangas <span className="sr-only">(current)</span>
-            </NavItem>
-          </li>
-        </ul>
+        {authStore.user && authStore.user.role === "admin" && (
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item m-auto">
+              <NavItem className="nav-link" to="/vendors">
+                Vendors <span className="sr-only">(current)</span>
+              </NavItem>
+            </li>
+            <li className="nav-item m-auto">
+              <NavItem className="nav-link" to="/mangas">
+                Mangas <span className="sr-only">(current)</span>
+              </NavItem>
+            </li>
+          </ul>
+        )}
         <ul className="navbar-nav ml-auto">
-          <li className="nav-item m-auto mr-auto">
-            <SigninButton />
-          </li>
-          <li className="nav-item m-auto mr-auto">
-            <SignupButton />
-          </li>
+          {authStore.user ? (
+            <UserProfile />
+          ) : (
+            <>
+              <li className="nav-item m-auto mr-auto">
+                <SigninButton />
+              </li>
+              <li className="nav-item m-auto mr-auto">
+                <SignupButton />
+              </li>
+            </>
+          )}
+
           <li className="nav-item m-auto mr-auto">
             <ThemeButton className="nav-link" onClick={toggleTheme}>
               {currentTheme === "lightTheme" ? "Dark" : "Light"} Mode
@@ -66,4 +87,4 @@ const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
   );
 };
 
-export default NavBar;
+export default observer(NavBar);
