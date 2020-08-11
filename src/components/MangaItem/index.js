@@ -1,6 +1,7 @@
 //React
 import React from "react";
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react";
 
 //Styles
 import { ShopImage, ItemWrapper } from "./styles";
@@ -23,4 +24,4 @@ const MangaItem = ({ manga }) => {
   );
 };
 
-export default MangaItem;
+export default observer(MangaItem);
