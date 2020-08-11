@@ -26,3 +26,8 @@ export const HeadeWrapper = styled.div`
   margin-bottom: auto;
   text-align: center;
 `;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
