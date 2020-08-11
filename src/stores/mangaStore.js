@@ -16,9 +16,7 @@ class MangaStore {
     }
   };
 
-  getItemById = (mangaId) => {
-    return this.mangas.find((manga) => manga.id === mangaId);
-  };
+  getItemById = (mangaId) => this.mangas.find((manga) => manga.id === mangaId);
 
   createManga = async (newManga, vendor) => {
     try {

@@ -1,6 +1,7 @@
 //React
 import React from "react";
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react";
 
 //Buttons
 import UpdateButton from "../buttons/UpdateButton ";
@@ -24,4 +25,4 @@ const VendorItem = ({ vendor }) => {
   );
 };
 
-export default VendorItem;
+export default observer(VendorItem);

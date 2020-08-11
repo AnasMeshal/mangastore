@@ -27,14 +27,15 @@ const VendorDetail = () => {
     (vendor) => vendor.slug === vendorSlug
   );
 
+  if (!vendor) return <Redirect to="/notfound" />;
+
   let mangas = [];
+
   if (vendor.mangas) {
-    vendor.mangas
+    mangas = vendor.mangas
       .map((manga) => mangaStore.getItemById(manga.id))
       .filter((manga) => manga);
   }
-
-  if (!vendor) return <Redirect to="/notfound" />;
 
   return (
     <>

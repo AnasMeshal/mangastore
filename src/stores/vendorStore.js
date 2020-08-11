@@ -21,7 +21,7 @@ class VendorStore {
       const formData = new FormData();
       for (const key in newVendor) formData.append(key, newVendor[key]);
       const res = await instance.post("/vendors", formData);
-      this.vendors.push(res.data);
+      this.vendors.push({ ...res.data, mangas: [] });
     } catch (error) {
       console.log(error);
     }
@@ -29,6 +29,8 @@ class VendorStore {
 
   updateVendor = async (updatedVendor) => {
     try {
+      const formData = new FormData();
+      for (const key in updatedVendor) formData.append(key, updatedVendor[key]);
       await instance.put(`/vendors/${updatedVendor.id}`, updatedVendor);
       const vendor = this.vendors.find(
         (vendor) => vendor.id === updatedVendor.id
