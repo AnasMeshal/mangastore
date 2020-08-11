@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 
 //Styles
-import { AddButtonStyled } from "./styles";
+import { AddButtonStyled, RequiredLabel } from "./styles";
 
 //Icon
 import { GrClose } from "react-icons/gr";
@@ -83,7 +83,9 @@ const SignupModal = ({ isOpen, closeModal }) => {
                 />
               </div>
               <div className="form-group col-md-12">
-                <label htmlFor="inputPassword4">Username</label>
+                <label htmlFor="inputPassword4">
+                  Username<RequiredLabel>*</RequiredLabel>
+                </label>
                 <input
                   value={user.username}
                   onChange={handleChange}
@@ -100,7 +102,6 @@ const SignupModal = ({ isOpen, closeModal }) => {
                   value={user.email}
                   autocomplete="off"
                   onChange={handleChange}
-                  required
                   type="text"
                   name="email"
                   className="form-control"
@@ -108,7 +109,9 @@ const SignupModal = ({ isOpen, closeModal }) => {
                 />
               </div>
               <div className="form-group col-md-12">
-                <label htmlFor="inputPassword4">Password</label>
+                <label htmlFor="inputPassword4">
+                  Password<RequiredLabel>*</RequiredLabel>
+                </label>
                 <input
                   value={user.password}
                   onChange={handleChange}

@@ -9,3 +9,7 @@ export const AddButtonStyled = styled.button`
   justify-content: center;
   padding: 1vh 3vw;
 `;
+
+export const RequiredLabel = styled.span`
+  color: red;
+`;

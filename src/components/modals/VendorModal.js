@@ -11,7 +11,7 @@ import { GrClose } from "react-icons/gr";
 import vendorStore from "../../stores/vendorStore";
 
 //Styles
-import { AddButtonStyled } from "./styles";
+import { AddButtonStyled, RequiredLabel } from "./styles";
 
 const customStyles = {
   content: {
@@ -66,7 +66,9 @@ const VenderModal = ({ isOpen, closeModal, oldVendor }) => {
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group col-md-6">
-                <label htmlFor="inputEmail4">Vendor Name</label>
+                <label htmlFor="inputEmail4">
+                  Vendor Name<RequiredLabel>*</RequiredLabel>
+                </label>
                 <input
                   value={vendor.name}
                   required

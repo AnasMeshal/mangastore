@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 
 //Styles
-import { AddButtonStyled } from "./styles";
+import { AddButtonStyled, RequiredLabel } from "./styles";
 
 //Stores
 import authStore from "../../stores/authStore";
@@ -59,7 +59,9 @@ const SigninModal = ({ isOpen, closeModal }) => {
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group col-md-12">
-                <label htmlFor="inputPassword4">Username</label>
+                <label htmlFor="inputPassword4">
+                  Username<RequiredLabel>*</RequiredLabel>
+                </label>
                 <input
                   value={user.username}
                   onChange={handleChange}
@@ -71,7 +73,9 @@ const SigninModal = ({ isOpen, closeModal }) => {
                 />
               </div>
               <div className="form-group col-md-12">
-                <label htmlFor="inputPassword4">Password</label>
+                <label htmlFor="inputPassword4">
+                  Password<RequiredLabel>*</RequiredLabel>
+                </label>
                 <input
                   value={user.password}
                   onChange={handleChange}

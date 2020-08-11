@@ -11,7 +11,7 @@ import mangaStore from "../../stores/mangaStore";
 import { GrClose } from "react-icons/gr";
 
 //Styles
-import { AddButtonStyled } from "./styles";
+import { AddButtonStyled, RequiredLabel } from "./styles";
 
 const customStyles = {
   content: {
@@ -69,7 +69,9 @@ const MangaModal = ({ isOpen, closeModal, oldManga, vendor }) => {
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group col-md-6">
-                <label htmlFor="inputEmail4">Manga Name</label>
+                <label htmlFor="inputEmail4">
+                  Manga Name<RequiredLabel>*</RequiredLabel>
+                </label>
                 <input
                   value={manga.name}
                   required
@@ -81,7 +83,9 @@ const MangaModal = ({ isOpen, closeModal, oldManga, vendor }) => {
                 />
               </div>
               <div className="form-group col-md-6">
-                <label htmlFor="inputPassword4">Manga Price</label>
+                <label htmlFor="inputPassword4">
+                  Manga Price<RequiredLabel>*</RequiredLabel>
+                </label>
                 <input
                   step="0.01"
                   value={manga.price}
@@ -96,7 +100,9 @@ const MangaModal = ({ isOpen, closeModal, oldManga, vendor }) => {
                 />
               </div>
               <div className="form-group col-md-12">
-                <label htmlFor="inputPassword4">Manga Description</label>
+                <label htmlFor="inputPassword4">
+                  Manga Description<RequiredLabel>*</RequiredLabel>
+                </label>
                 <input
                   value={manga.description}
                   required
@@ -108,7 +114,9 @@ const MangaModal = ({ isOpen, closeModal, oldManga, vendor }) => {
                 />
               </div>
               <div className="form-group col-md-12">
-                <label htmlFor="inputPassword4">Manga Author</label>
+                <label htmlFor="inputPassword4">
+                  Manga Author<RequiredLabel>*</RequiredLabel>
+                </label>
                 <input
                   value={manga.author}
                   required
