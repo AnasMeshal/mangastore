@@ -27,8 +27,7 @@ const VendorList = () => {
     <VendorItem vendor={vendor} key={vendor.id} />
   ));
 
-  if (!authStore.user || authStore.user.role !== "admin")
-    return <Redirect to="/" />;
+  if (!authStore.user) return <Redirect to="/" />;
 
   return (
     <>

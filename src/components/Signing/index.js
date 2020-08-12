@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect, useHistory } from "react-router";
+import { Redirect } from "react-router";
 
 //Styles
 import {
@@ -16,10 +16,9 @@ import { RiEyeLine } from "react-icons/ri";
 
 //Stores
 import authStore from "../../stores/authStore";
+import { observer } from "mobx-react";
 
 const Singing = () => {
-  const history = useHistory();
-
   const [isShowing, setIsShowing] = useState(false);
 
   const [wrongPasswordIsShowing, setWrongPasswordIsShowing] = useState(false);
@@ -60,17 +59,12 @@ const Singing = () => {
     }
   };
 
-  const pushing = () => {
-    history.push("/vendors");
-  };
-
   const handleSubmitSignIn = async (event) => {
     event.preventDefault();
     await authStore.signin(userSignIn);
-    pushing();
   };
 
-  if (authStore.user) return <Redirect to="/vendor" />;
+  if (authStore.user) return <Redirect to="/vendors" />;
 
   return isShowing ? (
     <FormWrapper>
@@ -225,4 +219,4 @@ const Singing = () => {
   );
 };
 
-export default Singing;
+export default observer(Singing);

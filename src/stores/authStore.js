@@ -1,6 +1,7 @@
 //React
 import { decorate, observable } from "mobx";
 import instance from "./instance";
+import axios from "axios";
 
 //Decode
 import decode from "jwt-decode";
@@ -14,13 +15,12 @@ class AuthStore {
   };
 
   signup = async (userData) => {
-    console.log("this is an authStore", userData);
     try {
       const res = await instance.post("/signup", userData);
       this.setUser(res.data.token);
       console.log(this.user);
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
 
@@ -28,7 +28,7 @@ class AuthStore {
     try {
       const res = await instance.post("/signin", userData);
       this.setUser(res.data.token);
-      console.log(res.data.token);
+      console.log(this.user);
     } catch (error) {
       console.log(error);
     }
