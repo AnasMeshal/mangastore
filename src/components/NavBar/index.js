@@ -3,8 +3,6 @@ import React from "react";
 import { observer } from "mobx-react";
 
 //Components
-import SignupButton from "../buttons/SignupButton ";
-import SigninButton from "../buttons/SigninButton";
 import UserProfile from "../UserProfile";
 
 //Stores
@@ -63,18 +61,7 @@ const NavBar = ({
           </ul>
         )}
         <ul className="navbar-nav ml-auto">
-          {authStore.user ? (
-            <UserProfile />
-          ) : (
-            <>
-              <li className="nav-item m-auto mr-auto">
-                <SigninButton />
-              </li>
-              <li className="nav-item m-auto mr-auto">
-                <SignupButton />
-              </li>
-            </>
-          )}
+          {authStore.user && <UserProfile />}
 
           <li className="nav-item m-auto mr-auto">
             <ThemeButton className="nav-link" onClick={toggleTheme}>

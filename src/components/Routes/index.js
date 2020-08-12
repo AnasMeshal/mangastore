@@ -4,10 +4,10 @@ import { Route, Switch } from "react-router";
 //Components
 import MangaList from "../MangaList";
 import MangaDetail from "../MangaDetail";
-import Home from "../Home";
 import NotFound from "../NotFound";
 import VendorList from "../VendorList";
 import VendorDetail from "../VendorDetail";
+import Singing from "../Signing";
 
 //Stores
 import mangaStore from "../../stores/mangaStore";
@@ -17,7 +17,7 @@ const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <Home />
+        <Singing />
       </Route>
       <Route exact path="/vendors/:vendorSlug">
         <VendorDetail />

@@ -2,23 +2,25 @@
 import { decorate, observable } from "mobx";
 import instance from "./instance";
 
+//Decode
 import decode from "jwt-decode";
 
 class AuthStore {
   user = null;
 
-  setUser = async (token) => {
+  setUser = (token) => {
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
   };
 
   signup = async (userData) => {
+    console.log("this is an authStore", userData);
     try {
       const res = await instance.post("/signup", userData);
       this.setUser(res.data.token);
-      console.log(res.data);
+      console.log(this.user);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
