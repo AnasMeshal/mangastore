@@ -34,7 +34,7 @@ class VendorStore {
     try {
       const formData = new FormData();
       for (const key in updatedVendor) formData.append(key, updatedVendor[key]);
-      await instance.put(`/vendors/${updatedVendor.id}`, updatedVendor);
+      await instance.put(`/vendors/${updatedVendor.id}`, formData);
       const vendor = this.vendors.find(
         (vendor) => vendor.id === updatedVendor.id
       );

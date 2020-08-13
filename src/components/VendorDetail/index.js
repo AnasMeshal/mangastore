@@ -15,14 +15,11 @@ import AddButton from "../buttons/AddButton ";
 import vendorStore from "../../stores/vendorStore";
 import mangaStore from "../../stores/mangaStore";
 import authStore from "../../stores/authStore";
+import UpdateButton from "../buttons/UpdateButton ";
 
 const VendorDetail = () => {
   const { vendorSlug } = useParams();
   const history = useHistory();
-
-  const goBack = () => {
-    history.push("/vendors");
-  };
 
   const vendor = vendorStore.vendors.find(
     (vendor) => vendor.slug === vendorSlug
@@ -49,10 +46,12 @@ const VendorDetail = () => {
       </Helmet>
       <VendorDetailWrapper>
         <h1>{vendor.name}</h1>
+        <span>
+          <UpdateButton vendor={vendor} />
+        </span>
         <img className="VendorImage" src={vendor.image} alt={vendor.name} />
         <AddButton vendor={vendor} />
         <MangaList mangas={mangas} />
-        <ChangeViewButton onClick={goBack}>back</ChangeViewButton>
       </VendorDetailWrapper>
     </>
   );
