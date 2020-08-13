@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
 
+//Buttons
+import AddButton from "../buttons/AddButton ";
+
 //Components
 import UserProfile from "../UserProfile";
 
@@ -16,7 +19,8 @@ import {
   WelcomeImgWrapper,
   WelcomeImage,
 } from "./styles";
-import AddButton from "../buttons/AddButton ";
+
+//Modals
 import VenderModal from "../modals/VendorModal";
 
 const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
@@ -63,7 +67,7 @@ const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
         <ul className="navbar-nav ml-auto">
           {authStore.user && <UserProfile />}
           {authStore.user && !authStore.user.vendorSlug && (
-            <button onClick={openModal}>create a new shop</button>
+            <AddButton onClick={openModal} />
           )}
 
           <VenderModal isOpen={isOpen} closeModal={closeModal} />
