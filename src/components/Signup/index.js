@@ -9,7 +9,6 @@ import {
   RequiredLabel,
   Form,
   PageChangerWrapper,
-  PageChanger,
   Linking,
 } from "./styles";
 

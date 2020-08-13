@@ -14,6 +14,7 @@ import AddButton from "../buttons/AddButton ";
 //Stores
 import vendorStore from "../../stores/vendorStore";
 import mangaStore from "../../stores/mangaStore";
+import authStore from "../../stores/authStore";
 
 const VendorDetail = () => {
   const { vendorSlug } = useParams();
@@ -37,7 +38,9 @@ const VendorDetail = () => {
       .filter((manga) => manga);
   }
 
-  console.log(vendor);
+  if (!authStore.user) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
