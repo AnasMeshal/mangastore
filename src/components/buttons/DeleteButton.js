@@ -19,7 +19,7 @@ const DeleteButton = ({ mangaId, redirect, vendorId }) => {
   const handleDelete = () => {
     if (vendorId) {
       vendorStore.deleteVendor(vendorId);
-      history.push("/vendors");
+      history.go("http://localhost:8000/");
     } else {
       mangaStore.deleteManga(mangaId);
     }

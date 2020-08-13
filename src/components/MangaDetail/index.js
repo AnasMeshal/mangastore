@@ -13,6 +13,7 @@ import UpdateButton from "../buttons/UpdateButton ";
 
 //Stores
 import mangaStore from "../../stores/mangaStore";
+import authStore from "../../stores/authStore";
 
 const MangaDetail = () => {
   const { mangaSlug } = useParams();
@@ -25,6 +26,8 @@ const MangaDetail = () => {
   const manga = mangaStore.mangas.find((manga) => manga.slug === mangaSlug);
 
   if (!manga) return <Redirect to="/notfound" />;
+
+  if (!authStore.user) return <Redirect to="/" />;
 
   return (
     <>

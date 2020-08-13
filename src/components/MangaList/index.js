@@ -27,6 +27,8 @@ const MangaList = ({ mangas }) => {
     <MangaItem manga={manga} key={manga.id} />
   ));
 
+  if (!authStore.user) return <Redirect to="/" />;
+
   return (
     <>
       <Helmet>
