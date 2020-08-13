@@ -12,6 +12,7 @@ import { BsTrash } from "react-icons/bs";
 //Stores
 import mangaStore from "../../stores/mangaStore";
 import vendorStore from "../../stores/vendorStore";
+import authStore from "../../stores/authStore";
 
 const DeleteButton = ({ mangaId, redirect, vendorId }) => {
   const history = useHistory();
@@ -19,7 +20,7 @@ const DeleteButton = ({ mangaId, redirect, vendorId }) => {
   const handleDelete = () => {
     if (vendorId) {
       vendorStore.deleteVendor(vendorId);
-      history.go("http://localhost:8000/");
+      authStore.user === null;
     } else {
       mangaStore.deleteManga(mangaId);
     }
