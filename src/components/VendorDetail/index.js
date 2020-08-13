@@ -16,6 +16,7 @@ import vendorStore from "../../stores/vendorStore";
 import mangaStore from "../../stores/mangaStore";
 import authStore from "../../stores/authStore";
 import UpdateButton from "../buttons/UpdateButton ";
+import DeleteButton from "../buttons/DeleteButton";
 
 const VendorDetail = () => {
   const { vendorSlug } = useParams();
@@ -48,6 +49,7 @@ const VendorDetail = () => {
         <h1>{vendor.name}</h1>
         <span>
           <UpdateButton vendor={vendor} />
+          <DeleteButton vendorId={vendor.id} />
         </span>
         <img className="VendorImage" src={vendor.image} alt={vendor.name} />
         <AddButton vendor={vendor} />

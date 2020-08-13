@@ -3,10 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
 
-//Buttons
-import UpdateButton from "../buttons/UpdateButton ";
-import DeleteButton from "../buttons/DeleteButton";
-
 //Styles
 import { ShopImage, ItemWrapper, ItemWrapperWrapper } from "./styles";
 
@@ -19,8 +15,6 @@ const VendorItem = ({ vendor }) => {
         </Link>
         <h1>{vendor.name}</h1>
       </ItemWrapper>
-      <UpdateButton vendor={vendor} />
-      <DeleteButton vendorId={vendor.id} />
     </ItemWrapperWrapper>
   );
 };
