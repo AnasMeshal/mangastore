@@ -1,5 +1,5 @@
 //React
-import React from "react";
+import React, { useState } from "react";
 import { observer } from "mobx-react";
 
 //Components
@@ -16,15 +16,15 @@ import {
   WelcomeImgWrapper,
   WelcomeImage,
 } from "./styles";
+import AddButton from "../buttons/AddButton ";
+import VenderModal from "../modals/VendorModal";
 
-const NavBar = ({
-  currentTheme,
-  lightLogo,
-  darkLogo,
-  toggleTheme,
-  userLight,
-  userDark,
-}) => {
+const NavBar = ({ currentTheme, lightLogo, darkLogo, toggleTheme }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
+
   return (
     <NavStyled className="navbar navbar-expand">
       <button
@@ -62,7 +62,11 @@ const NavBar = ({
         )}
         <ul className="navbar-nav ml-auto">
           {authStore.user && <UserProfile />}
+          {authStore.user && !authStore.user.vendorSlug && (
+            <button onClick={openModal}>create a new shop</button>
+          )}
 
+          <VenderModal isOpen={isOpen} closeModal={closeModal} />
           <li className="nav-item m-auto mr-auto">
             <ThemeButton className="nav-link" onClick={toggleTheme}>
               {currentTheme === "lightTheme" ? "Dark" : "Light"} Mode

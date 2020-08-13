@@ -1,7 +1,6 @@
 //React
 import { decorate, observable } from "mobx";
 import instance from "./instance";
-import axios from "axios";
 
 //Decode
 import decode from "jwt-decode";
@@ -18,7 +17,7 @@ class AuthStore {
     try {
       const res = await instance.post("/signup", userData);
       this.setUser(res.data.token);
-      console.log(this.user);
+      console.log(res.data.token);
     } catch (error) {
       console.log(error);
     }

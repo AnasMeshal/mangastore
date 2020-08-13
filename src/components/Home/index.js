@@ -4,8 +4,19 @@ import { Helmet } from "react-helmet";
 
 //Styles
 import { TitleWrapper, Title, Description } from "./styles";
+import authStore from "../../stores/authStore";
+import { Redirect } from "react-router";
+import { observer } from "mobx-react";
 
 const Home = () => {
+  if (!authStore.user) {
+    return <Redirect to="/" />;
+  }
+
+  if (authStore.user.vendorSlug) {
+    return <Redirect to={`/vendors/${authStore.user.vendorSlug}`} />;
+  }
+
   return (
     <>
       <Helmet>
@@ -19,4 +30,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default observer(Home);

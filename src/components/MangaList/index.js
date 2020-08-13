@@ -27,9 +27,6 @@ const MangaList = ({ mangas }) => {
     <MangaItem manga={manga} key={manga.id} />
   ));
 
-  if (!authStore.user || authStore.user.role !== "admin")
-    return <Redirect to="/" />;
-
   return (
     <>
       <Helmet>

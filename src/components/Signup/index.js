@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router";
+import { observer } from "mobx-react";
 
 //Styles
 import {
@@ -9,6 +10,7 @@ import {
   Form,
   PageChangerWrapper,
   PageChanger,
+  Linking,
 } from "./styles";
 
 //Icon
@@ -16,16 +18,13 @@ import { RiEyeLine } from "react-icons/ri";
 
 //Stores
 import authStore from "../../stores/authStore";
-import { observer } from "mobx-react";
 
-const Singing = () => {
-  const [isShowing, setIsShowing] = useState(false);
-
+const Signup = () => {
   const [wrongPasswordIsShowing, setWrongPasswordIsShowing] = useState(false);
 
   const [passwordIsShowing, setPasswordIsShowing] = useState(false);
 
-  const [userSignUp, setUserSignUp] = useState({
+  const [user, setUser] = useState({
     firstName: "",
     lastName: "",
     username: "",
@@ -35,46 +34,42 @@ const Singing = () => {
     confirmedPassword: "",
   });
 
-  const [userSignIn, setUserSignIn] = useState({
-    username: "",
-    password: "",
-  });
-
-  const handleChangeSignUp = (event) => {
-    setUserSignUp({ ...userSignUp, [event.target.name]: event.target.value });
+  const handleChange = (event) => {
+    setUser({ ...user, [event.target.name]: event.target.value });
   };
 
-  const handleChangeSignIn = (event) => {
-    setUserSignIn({ ...userSignIn, [event.target.name]: event.target.value });
-  };
-
-  const handleSubmitSignUp = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    if (userSignUp.confirmedPassword === userSignUp.password) {
-      console.log("this is handle submit if true", userSignUp);
-      authStore.signup(userSignUp);
+    if (user.confirmedPassword === user.password) {
+      console.log("this is handle submit if true", user);
+      authStore.signup(user);
       setWrongPasswordIsShowing(false);
     } else {
       setWrongPasswordIsShowing(true);
     }
   };
 
-  const handleSubmitSignIn = async (event) => {
-    event.preventDefault();
-    await authStore.signin(userSignIn);
-  };
+  if (authStore.user) {
+    return (
+      <Redirect
+        to={
+          authStore.user.vendorSlug
+            ? `/vendors/${authStore.user.vendorSlug}`
+            : "/home"
+        }
+      />
+    );
+  }
 
-  if (authStore.user) return <Redirect to="/vendors" />;
-
-  return isShowing ? (
+  return (
     <FormWrapper>
-      <Form onSubmit={handleSubmitSignUp}>
+      <Form onSubmit={handleSubmit}>
         <div className="form-row">
           <div className="form-group col-md-6">
             <label htmlFor="inputEmail4">First Name</label>
             <input
-              value={userSignUp.firstName}
-              onChange={handleChangeSignUp}
+              value={user.firstName}
+              onChange={handleChange}
               type="text"
               name="firstName"
               className="form-control"
@@ -84,8 +79,8 @@ const Singing = () => {
           <div className="form-group col-md-6">
             <label htmlFor="inputPassword4">Last Name</label>
             <input
-              value={userSignUp.lastName}
-              onChange={handleChangeSignUp}
+              value={user.lastName}
+              onChange={handleChange}
               type="text"
               name="lastName"
               className="form-control"
@@ -97,8 +92,8 @@ const Singing = () => {
               Username<RequiredLabel>*</RequiredLabel>
             </label>
             <input
-              value={userSignUp.username}
-              onChange={handleChangeSignUp}
+              value={user.username}
+              onChange={handleChange}
               required
               type="text"
               name="username"
@@ -109,9 +104,9 @@ const Singing = () => {
           <div className="form-group col-md-12">
             <label htmlFor="inputPassword4">Email</label>
             <input
-              value={userSignUp.email}
+              value={user.email}
               autoComplete="off"
-              onChange={handleChangeSignUp}
+              onChange={handleChange}
               type="text"
               name="email"
               className="form-control"
@@ -127,8 +122,8 @@ const Singing = () => {
               />
             </label>
             <input
-              value={userSignUp.password}
-              onChange={handleChangeSignUp}
+              value={user.password}
+              onChange={handleChange}
               required
               type={!passwordIsShowing ? "password" : "text"}
               name="password"
@@ -141,8 +136,8 @@ const Singing = () => {
               Confirm Password<RequiredLabel>*</RequiredLabel>
             </label>
             <input
-              value={userSignUp.confirmedPassword}
-              onChange={handleChangeSignUp}
+              value={user.confirmedPassword}
+              onChange={handleChange}
               required
               type={!passwordIsShowing ? "password" : "text"}
               name="confirmedPassword"
@@ -163,60 +158,11 @@ const Singing = () => {
           Sign Up
         </AddButtonStyled>
         <PageChangerWrapper>
-          <PageChanger onClick={() => setIsShowing(false)}>
-            already have an account ?
-          </PageChanger>
-        </PageChangerWrapper>
-      </Form>
-    </FormWrapper>
-  ) : (
-    <FormWrapper>
-      <Form onSubmit={handleSubmitSignIn}>
-        <div className="form-row">
-          <div className="form-group col-md-12">
-            <label htmlFor="inputPassword4">
-              username<RequiredLabel>*</RequiredLabel>
-            </label>
-            <input
-              value={userSignIn.username}
-              onChange={handleChangeSignIn}
-              required
-              type="text"
-              name="username"
-              className="form-control"
-              placeholder="username"
-            />
-          </div>
-          <div className="form-group col-md-12">
-            <label htmlFor="inputPassword4">
-              Password<RequiredLabel>*</RequiredLabel>{" "}
-              <RiEyeLine
-                onClick={() => setPasswordIsShowing(!passwordIsShowing)}
-                size="1.3em"
-              />
-            </label>
-            <input
-              value={userSignIn.password}
-              onChange={handleChangeSignIn}
-              required
-              type={!passwordIsShowing ? "password" : "text"}
-              name="password"
-              className="form-control"
-              placeholder="password"
-            />
-          </div>
-        </div>
-        <AddButtonStyled type="submit" className="btn btn-primary">
-          Sign In
-        </AddButtonStyled>
-        <PageChangerWrapper>
-          <PageChanger onClick={() => setIsShowing(true)}>
-            Dont have an account ? Create one
-          </PageChanger>
+          <Linking to="/">already have an account ?</Linking>
         </PageChangerWrapper>
       </Form>
     </FormWrapper>
   );
 };
 
-export default observer(Singing);
+export default observer(Signup);

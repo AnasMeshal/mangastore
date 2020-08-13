@@ -37,6 +37,8 @@ const VendorDetail = () => {
       .filter((manga) => manga);
   }
 
+  console.log(vendor);
+
   return (
     <>
       <Helmet>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router";
+import { observer } from "mobx-react";
 
 //Components
 import MangaList from "../MangaList";
@@ -7,17 +8,24 @@ import MangaDetail from "../MangaDetail";
 import NotFound from "../NotFound";
 import VendorList from "../VendorList";
 import VendorDetail from "../VendorDetail";
-import Singing from "../Signing";
+import Signin from "../Signin";
+import Signup from "../Signup";
+import Home from "../Home";
 
 //Stores
 import mangaStore from "../../stores/mangaStore";
-import { observer } from "mobx-react";
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <Singing />
+        <Signin />
+      </Route>
+      <Route exact path="/signup">
+        <Signup />
+      </Route>
+      <Route exact path="/home">
+        <Home />
       </Route>
       <Route exact path="/vendors/:vendorSlug">
         <VendorDetail />

@@ -1,3 +1,6 @@
+//React
+import { Link } from "react-router-dom";
+
 //Styled components
 import styled from "styled-components";
 
@@ -39,5 +42,13 @@ export const PageChanger = styled.p`
   :hover {
     cursor: pointer;
     color: #0645ad;
+  }
+`;
+
+export const Linking = styled(Link)`
+  color: ${({ theme }) => theme.textColor};
+
+  :hover {
+    text-decoration: none;
   }
 `;
