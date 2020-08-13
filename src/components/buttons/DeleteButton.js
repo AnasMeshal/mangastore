@@ -20,7 +20,7 @@ const DeleteButton = ({ mangaId, redirect, vendorId }) => {
   const handleDelete = () => {
     if (vendorId) {
       vendorStore.deleteVendor(vendorId);
-      authStore.user === null;
+      authStore.user = null;
     } else {
       mangaStore.deleteManga(mangaId);
     }
