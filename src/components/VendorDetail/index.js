@@ -1,11 +1,11 @@
 //React
 import React from "react";
-import { useParams, useHistory, Redirect } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { observer } from "mobx-react";
 
 // Styles
-import { VendorDetailWrapper, ChangeViewButton } from "./styles";
+import { VendorDetailWrapper } from "./styles";
 
 //Components
 import MangaList from "../MangaList";
@@ -20,7 +20,6 @@ import DeleteButton from "../buttons/DeleteButton";
 
 const VendorDetail = () => {
   const { vendorSlug } = useParams();
-  const history = useHistory();
 
   const vendor = vendorStore.vendors.find(
     (vendor) => vendor.slug === vendorSlug

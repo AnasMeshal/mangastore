@@ -18,7 +18,6 @@ class AuthStore {
     try {
       const res = await instance.post("/signup", userData);
       this.setUser(res.data.token);
-      console.log(res.data.token);
     } catch (error) {
       console.log(error);
     }
@@ -28,7 +27,6 @@ class AuthStore {
     try {
       const res = await instance.post("/signin", userData);
       this.setUser(res.data.token);
-      console.log(this.user);
     } catch (error) {
       console.log(error);
     }

@@ -49,6 +49,7 @@ class VendorStore {
     try {
       await instance.delete(`/vendors/${vendorId}`);
       this.vendors = this.vendors.filter((_vendor) => _vendor.id !== vendorId);
+      authStore.user.vendorSlug = null;
     } catch (error) {
       console.log(error);
     }
